@@ -4,10 +4,12 @@ import Home from "Routes/Home";
 import TV from "Routes/TV";
 import Search from "Routes/Search";
 import Popular from "Routes/Popular";
+import Header from "./Header";
 
 export default () => (
     
     <Router>
+        <Header/>
         <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/tv" exact component={TV}/>
