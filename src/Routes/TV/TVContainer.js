@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TVPresenter from "./TVPresenter";
 import { tvApi } from "api";
+import { Link } from "react-router-dom";
 
 class TVContainer extends Component{
 
@@ -42,7 +43,7 @@ class TVContainer extends Component{
             <>
             <p>TV</p>
             <li>
-                <a href="/tv/popular">Popular</a>
+                <Link to="/tv/popular">Popular</Link>
             </li>
             <TVPresenter 
             topRated={topRated}
