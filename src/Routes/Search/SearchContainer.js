@@ -7,16 +7,26 @@ class SearchContainer extends Component{
     state = {
         movieResults: null,
         tvResults: null,
-        searchTerm: "code",
+        searchTerm: "",
         loading: false,
         error: null
     }
 
-        handleSubmit = async(searchTerm) => {
-        
+        handleSubmit = async(e) => {
+        e.preventDefault();
+        const { searchTerm } = this.state;
         if(searchTerm !== ""){
             this.searchByTerm(searchTerm);
         }
+    }
+
+    updateTerm = (e) => {
+        const {
+            target: {value}
+        } = e;
+        this.setState({
+            searchTerm: value 
+        })
     }
 
     searchByTerm = async() => {
@@ -58,6 +68,7 @@ class SearchContainer extends Component{
             loading={loading}
             error={error}
             handleSubmit={this.handleSubmit}
+            updateTerm={this.updateTerm}
             />
         )
     }
