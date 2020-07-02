@@ -10,6 +10,7 @@ const Container = styled.div`
     font-size: 40px;
     position: relative;
     top: -75px;
+    background-color: white;
     animation: turnLoader 1s infinite;
     @keyframes turnLoader{
         0%{

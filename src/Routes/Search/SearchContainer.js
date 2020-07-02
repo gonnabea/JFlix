@@ -33,6 +33,7 @@ class SearchContainer extends Component{
         const { searchTerm } = this.state;
         this.setState({loading: true});    
         try{
+            
             const {data: { results: movieResults }} = await moviesApi.search(searchTerm);
             const {data: { results: tvResults }} = await tvApi.search(searchTerm);
             console.log(movieResults, tvResults);
@@ -40,7 +41,7 @@ class SearchContainer extends Component{
                 movieResults,
                 tvResults
             })
-          
+            
         }
         catch{
             this.setState({error: "Can't find result. Please try again 😅"})

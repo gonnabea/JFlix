@@ -3,38 +3,52 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
+import Message from "Components/Message";
+import Poster from "Components/Poster"
 
 const Container = styled.div`
-  padding: 0px 20px;
+  padding: 0px 1%;
 `;
 
 const Form = styled.form`
-width: 50%;
+width: 98%;
 `;
 
 const Input = styled.input`
 all: unset;
-width: 100%;
 font-size: 20px;
 margin-bottom: 30px;
 border-radius: 10px;
 padding-left: 15px;
-width: 300px;
+width: 30%;
+border-bottom: solid 1px orange;
+animation: nonFocused 0.5s forwards;
 :focus{
-    animation: focusedInput 0.3s forwards;
+    animation: focused 0.5s forwards;
     ::placeholder{
         color: white;
         opacity: 0.8;
+        display: flex;
+        align-items: center;
     }
 }
-@keyframes focusedInput{
-
+@keyframes focused{
     to{
-        box-shadow: 10px 5px 15px white;
+        box-shadow: 5px 5px 10px orange;
+        width: 100%;
     }
 }
-`;
-
+@keyframes nonFocused{
+    from{
+        box-shadow: 5px 5px 10px orange;
+        width: 100%;
+    }
+    to{
+        box-shadow: none;
+        width: 30%;
+    }
+}
+`
 
 
 const SearchPresenter = ({
@@ -47,12 +61,24 @@ const SearchPresenter = ({
     updateTerm
 }) => <Container>
     <Form onSubmit={handleSubmit}>
-    <Input type="text" placeholder="Search as title, description, etc..." value={searchTerm} onChange={updateTerm}/>
+    <Input type="text" placeholder="Search Movies or TV Shows..." value={searchTerm} onChange={updateTerm}/>
     </Form>
     {loading ? <Loader/> : <>
-    {movieResults && movieResults.length > 0 && <Section title="Movie Results">{movieResults.map( movie => <span key={movie.id}>{movie.title}</span>)}</Section>}
-    {tvResults && tvResults.length > 0 && <Section title="TV Show Results">{tvResults.map( show => <span key={show.id}>{show.name}</span>)}</Section>}
+    {movieResults && movieResults.length > 0 && <Section title="Movie Results">{movieResults.map( movie => <Poster key={movie.id} id={movie.id}
+     imageUrl={movie.poster_path} 
+     title={movie.original_title} 
+     rating={movie.vote_average} year={movie.release_date && movie.release_date.substring(0,4) } isMovie={true} />)}</Section>}
+    {tvResults && tvResults.length > 0 && <Section title="TV Show Results">{tvResults.map( show => <Poster key={show.id} id={show.id}
+     imageUrl={show.poster_path} 
+     title={show.original_name} 
+     rating={show.vote_average} 
+     year={show.first_air_date && show.first_air_date.substring(0,4) } 
+     />)}</Section>}
     </>}
+    {error && <Message color="red" error={error}/>}
+    {movieResults && tvResults && movieResults.length === 0 && tvResults.length === 0 &&
+    <Message color="grey" text="Nothing Found. Please try again!"/>
+    }
 </Container>;
 
 SearchPresenter.propTypes = {

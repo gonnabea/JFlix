@@ -10,9 +10,10 @@ margin-bottom: 50px;
   }
 `;
 
-const Title = styled.span`
+const Title = styled.cite`
 font-size: 15px;
 font-weight: 700;
+color: orange;
 `;
 
 const Grid = styled.div`

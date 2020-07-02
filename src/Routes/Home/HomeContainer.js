@@ -23,6 +23,7 @@ export default class extends Component{
                 upComing,
                 popular
             })
+            
         } 
         catch{
             this.setState({
