@@ -16,17 +16,37 @@ font-weight: 700;
 color: orange;
 `;
 
-const Grid = styled.div`
+const Flex = styled.div`
 margin-top: 25px;
-display: grid;
-grid-template-columns: repeat(auto-fill, 125px);
-grid-gap: 25px;
+display: flex;
+/* display: grid; */
+/* grid-template-columns: repeat(auto-fill, 125px); */
+overflow: hidden;
+/* grid-gap: 25px; */
+position: relative;
 `;
+
+const SlideBtn = styled.button`
+position: sticky;
+${ props => props.direction ==="right" ? {right:"0"} : {left:"0"}};
+top:0;
+height: 250px;
+z-index: 100;
+background-color: rgba(0,0,0,0.3);
+font-size: 50px;
+color: white;
+font-weight: 700;
+cursor: pointer;
+`
 
 const Section = ({title, children}) => (
     <Container>
         <Title>{title}</Title>
-        <Grid>{children}</Grid>
+        <Flex>
+        <SlideBtn onClick={(e) => sliding({e, direction:"left"})} direction="left">{`<`}</SlideBtn>
+            {children}
+        <SlideBtn onClick={(e) => sliding({e, direction:"right"})} direction="right">{`>`}</SlideBtn>
+        </Flex>
     </Container>
 );
 
@@ -36,6 +56,18 @@ Section.propTypes = {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
     ])
+}
+
+
+const sliding = ({e, direction}) => {
+    const { parentNode : flexBox } = e.target;
+    console.log(flexBox.scrollLeft)
+    const getDirection = direction === "left" ? -800 : 800;
+    flexBox.scroll({
+        left:flexBox.scrollLeft + getDirection,
+        behavior:"smooth"
+    }); 
+
 }
 
 export default Section;

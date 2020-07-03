@@ -44,6 +44,7 @@ Welcome!
  - [ ] https://tympanus.net/Tutorials/RapidImageHoverMenu/
 
  - JS
- 
- [ ] Recently viewed (local-storage)
- [ ] Remember Play Time (local-storage)
+
+ - [ ] Recently viewed (local-storage)
+ - [ ] Remember Play Time (local-storage)
+ - [ ] Video Play when hovered

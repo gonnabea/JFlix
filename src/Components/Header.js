@@ -14,6 +14,7 @@ top: 0;
 width: 100vw;
 font-size: 15px;
 font-weight: 700;
+z-index: 999;
 :hover{
     color: white;
     animation: mouseOn 0.3s forwards;
