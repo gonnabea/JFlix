@@ -6,21 +6,21 @@ Welcome!
 
 ## Screens
 
- - [ ] Home
- - [ ] TV Shows
- - [ ] Search
+ - [x] Home
+ - [x] TV Shows
+ - [x] Search
  - [ ] Detail
  
  ## API Verbs
 
- - [ ] Now playing (Movie)
- - [ ] Upcoming (Movie)
- - [ ] Top Rated (TV)
- - [ ] Popular (TV, X)\
- - [ ] Airing Today (TV)
+ - [x] Now playing (Movie)
+ - [x] Upcoming (Movie)
+ - [x] Top Rated (TV)
+ - [x] Popular (TV, X)\
+ - [x] Airing Today (TV)
  - [ ] Tv Show Detail
  - [ ] Movie Detail
- - [ ] Search
+ - [x] Search
 
  ### Code Challenges
  - [ ] IMDB Link
@@ -33,6 +33,7 @@ Welcome!
 
  - CSS
 
+ - [x] Slider for sections
  - [ ] Full Image Reavel Effect (https://tympanus.net/codrops/2018/06/12/full-image-reveal-effect/)
  - [ ] Show header with animation when you hover (https://tympanus.net/Development/ProximityFeedback/index4.html)
  - [ ] 3d poster with movie info (or 3d info box)

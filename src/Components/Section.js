@@ -37,6 +37,9 @@ font-size: 50px;
 color: white;
 font-weight: 700;
 cursor: pointer;
+:hover{
+    background-color: black;
+}
 `
 
 const Section = ({title, children}) => (
@@ -61,7 +64,6 @@ Section.propTypes = {
 
 const sliding = ({e, direction}) => {
     const { parentNode : flexBox } = e.target;
-    console.log(flexBox.scrollLeft)
     const getDirection = direction === "left" ? -800 : 800;
     flexBox.scroll({
         left:flexBox.scrollLeft + getDirection,
