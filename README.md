@@ -9,7 +9,7 @@ Welcome!
  - [x] Home
  - [x] TV Shows
  - [x] Search
- - [ ] Detail
+ - [x] Detail
  
  ## API Verbs
 
@@ -18,8 +18,8 @@ Welcome!
  - [x] Top Rated (TV)
  - [x] Popular (TV, X)\
  - [x] Airing Today (TV)
- - [ ] Tv Show Detail
- - [ ] Movie Detail
+ - [x] Tv Show Detail
+ - [x] Movie Detail
  - [x] Search
 
  ### Code Challenges
@@ -49,3 +49,6 @@ Welcome!
  - [ ] Recently viewed (local-storage)
  - [ ] Remember Play Time (local-storage)
  - [ ] Video Play when hovered
+
+ - ETC
+ = [ ] Footer

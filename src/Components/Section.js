@@ -11,7 +11,7 @@ margin-bottom: 50px;
 `;
 
 const Title = styled.cite`
-font-size: 15px;
+font-size: 20px;
 font-weight: 700;
 color: orange;
 `;

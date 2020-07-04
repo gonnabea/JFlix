@@ -55,7 +55,7 @@ const Image = styled.img`
 const Infos = styled.div`
 position: relative;
 bottom: 200px;
-width: 50%;
+width: 40%;
 left: 0;
 opacity: 0;
 display: flex;
