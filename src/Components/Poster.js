@@ -8,18 +8,17 @@ const Container = styled.div`
 `
 const ImageContainer = styled.div`
     margin-bottom: 5px;
-    
+    height: 250px;
 `
 
 const Image = styled.img`
-    background-image: url(${props => `"https://image.tmdb.org/t/p/w500${props.bgUrl}"`});
-    width: 180px;
-    height: 250px;
+    background-image: url(${props => props.bgUrl});
+    width: 200px;
+    height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
     border-radius: 4px;
-    
     margin-right: 40px;
     z-index:200;
     :hover{
@@ -62,6 +61,7 @@ opacity: 0;
 display: flex;
 flex-direction: column;
 z-index:-1;
+
 @keyframes showInfos{
     to{
         opacity:1;
@@ -103,14 +103,14 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) =>
         <ImageContainer>
             <Image onMouseOver={(e) => mouseOn(e)} 
             onMouseOut={(e) => mouseOut(e)} 
-            bgUrl={imageUrl} />
+            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : ""} />
             <Infos>
             <Title>{title}</Title>
             <Rating>
                 <span role="img" aria-label="rating">
-                    ★
+                {rating ? "★" : ""}
                 </span>{" "}
-                {rating}/10
+                {rating ? `${rating} / 10` : ""}
             </Rating>
         <Year>{year}</Year>
             </Infos>
@@ -130,13 +130,13 @@ Poster.propTypes = {
 function mouseOn(e){
     const {childNodes : infoBox } = e.target.parentNode;
     e.target.style.animation = "hoverImg 0.3s forwards";
-    infoBox[1].style.animation = "showInfos 0.3s forwards"
+    infoBox[1].style.animation = "showInfos 0.3s forwards";
 }
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
     e.target.style.animation = "hoverImgOut 0.3s forwards";
-    infoBox[1].style.animation = "hideInfos 0.3s forwards"
+    infoBox[1].style.animation = "hideInfos 0.3s forwards";
 }
 
 export default Poster;

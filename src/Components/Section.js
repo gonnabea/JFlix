@@ -24,6 +24,7 @@ display: flex;
 overflow: hidden;
 /* grid-gap: 25px; */
 position: relative;
+
 `;
 
 const SlideBtn = styled.button`
@@ -45,7 +46,7 @@ cursor: pointer;
 const Section = ({title, children}) => (
     <Container>
         <Title>{title}</Title>
-        <Flex>
+        <Flex id="flex">
         <SlideBtn onClick={(e) => sliding({e, direction:"left"})} direction="left">{`<`}</SlideBtn>
             {children}
         <SlideBtn onClick={(e) => sliding({e, direction:"right"})} direction="right">{`>`}</SlideBtn>
@@ -68,7 +69,8 @@ const sliding = ({e, direction}) => {
     flexBox.scroll({
         left:flexBox.scrollLeft + getDirection,
         behavior:"smooth"
-    }); 
+    });
+    console.log(flexBox.pageXOffset) 
 
 }
 
