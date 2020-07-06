@@ -20,7 +20,7 @@ const Image = styled.img`
     background-position: left;
     border-radius: 4px;
     margin-right: 40px;
-    z-index:200;
+    animation: hoverImgOut 0.5s forwards;
     :hover{
     
     position: block;
@@ -132,8 +132,8 @@ function mouseOn(e){
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
-    e.target.style.animation = "hoverImgOut 0.5s forwards";
-    infoBox[1].style.animation = "hideInfos 0.5s forwards";
+    e.target.style.animation = "hoverImgOut 0s forwards";
+    infoBox[1].style.animation = "hideInfos 0s forwards";
 }
 
 export default Poster;

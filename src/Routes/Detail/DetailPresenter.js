@@ -9,6 +9,7 @@ const Container = styled.div`
     width: 100%;
     position: relative;
     padding: 50px;
+
 `
 const Backdrop = styled.div`
   position: absolute;
@@ -32,14 +33,53 @@ const Content = styled.div`
     height: 100%;
 `;
 
+const CoverContainer = styled.div`
+@keyframes rotate{
+        from{
+            
+        }
+        to{
+            transform: rotateY(180deg);
+        }
+    }
+`;
+
 const Cover = styled.div`
-    width: 30%;
+    width: 350px;
     background-image: url(${props => props.bgImage});
     background-position: center center;
     background-size: cover;
     height: 100%;
     border-radius: 5px;
 `;
+
+const VideoContainer = styled.div`
+position: relative;
+width: 100%;
+height: 600px;
+background-color: rgba(0,0,0,0.7);
+box-shadow: 0 0 20px white;
+z-index: 100;
+margin-bottom: 30px;
+display: flex;
+justify-content: center;
+@keyframes showPopUp{
+    from{
+        height: 50px;
+    }
+    to{        
+        height: 600px;
+    }
+}
+@keyframes hidePopUp{
+    from{
+        height: 600px;
+    }
+    to{
+        height: 50px;
+    }
+}
+`
 
 const Data = styled.div`
     width: 70%;
@@ -70,7 +110,9 @@ const Overview = styled.p`
     width: 50%;
 `;
 
-
+const RotateBtn = styled.button`
+    
+`
 
 const DetailPresenter = ({result, error, loading}) => (
     loading ? (
@@ -87,10 +129,15 @@ const DetailPresenter = ({result, error, loading}) => (
         </Helmet>
         <Backdrop 
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
+        <VideoContainer onClick={showPopUp} >
+        <iframe width="90%" height="100%" src={`https://www.youtube.com/embed/${result.videos.results[0].key}?autoplay=1`} frameborder="0" title="Youtube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            
+        </VideoContainer>
     <Content>
         <Cover  bgImage={result.poster_path ? 
             `https://image.tmdb.org/t/p/original${result.poster_path}`
-            : ""} />
+            : ""}/>
+        
     <Data>
         <Title>
             {result.original_title ? result.original_title : result.original_name}
@@ -126,6 +173,16 @@ DetailPresenter.propTypes = {
     result: PropTypes.object,
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired
+}
+
+const showPopUp = (e) => {
+    console.log(e.target)
+    e.target.style.animation = "showPopUp 0.5s forwards"
+
+}
+
+const hidePopUp = (e) => {
+    e.target.style.animation = "hidePopUp 0.5s forwards"
 }
 
 export default DetailPresenter;

@@ -9,7 +9,7 @@ import EmptySpace from "../../Components/EmptySpace";
 import { Helmet } from "react-helmet";
 
 const Container = styled.div`
-  padding: 0px 1%;
+  padding: 30px 1%;
 `;
 
 const Form = styled.form`
@@ -23,6 +23,7 @@ margin-bottom: 30px;
 border-radius: 10px;
 padding-left: 15px;
 width: 30%;
+height: 80px;
 border-bottom: solid 1px orange;
 animation: nonFocused 0.5s forwards;
 :focus{
@@ -37,17 +38,17 @@ animation: nonFocused 0.5s forwards;
 @keyframes focused{
     to{
         box-shadow: 5px 5px 10px orange;
-        width: 100%;
+        width: 90%;
     }
 }
 @keyframes nonFocused{
     from{
         box-shadow: 5px 5px 10px orange;
-        width: 100%;
+        width: 90%;
     }
     to{
         box-shadow: none;
-        width: 30%;
+        width: 280px;
     }
 }
 `
