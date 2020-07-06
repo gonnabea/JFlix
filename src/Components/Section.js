@@ -70,8 +70,6 @@ const sliding = ({e, direction}) => {
         left:flexBox.scrollLeft + getDirection,
         behavior:"smooth"
     });
-    console.log(flexBox.pageXOffset) 
-
 }
 
 export default Section;

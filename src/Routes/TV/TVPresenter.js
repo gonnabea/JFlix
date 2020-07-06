@@ -5,6 +5,7 @@ import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import Message from "Components/Message";
 import Poster from "../../Components/Poster";
+import EmptySpace from "Components/EmptySpace";
 
 const Container = styled.div`
 padding: 20px 20px;
@@ -22,25 +23,25 @@ const TVPresenter = ({
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
-     year={show.first_air_date.substring(0,4) } 
-     />)}<Poster/> </Section>)}
+     year={show.first_air_date ? show.first_air_date.substring(0,4) : "" } 
+     />)}<EmptySpace/> </Section>)}
         {popular && popular.length > 0 && 
         (<Section title="Popular TV Shows" >
             {popular.map( show => <Poster key={show.id} id={show.id}
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
-     year={show.first_air_date.substring(0,4) } 
-     />)}<Poster/> </Section>)}
+     year={show.first_air_date ? show.first_air_date.substring(0,4) : "" } 
+     />)}<EmptySpace/> </Section>)}
         {airingTodays && airingTodays.length > 0 && 
-        (<Section title="airingToday" >
+        (<Section title="Airing Today" >
             {airingTodays.map( show => <Poster key={show.id} id={show.id}
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
-     year={show.first_air_date.substring(0,4) } 
+     year={show.first_air_date ? show.first_air_date.substring(0,4) : ""} 
      />)}
-         <Poster/>   </Section>)}
+         <EmptySpace/>   </Section>)}
         {error && (<Message text={error}></Message>)}
     </Container>;
 

@@ -5,6 +5,7 @@ import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster"
+import EmptySpace from "../../Components/EmptySpace";
 
 const Container = styled.div`
   padding: 0px 1%;
@@ -67,13 +68,13 @@ const SearchPresenter = ({
     {movieResults && movieResults.length > 0 && <Section title="Movie Results">{movieResults.map( movie => <Poster key={movie.id} id={movie.id}
      imageUrl={movie.poster_path} 
      title={movie.original_title} 
-     rating={movie.vote_average} year={movie.release_date && movie.release_date.substring(0,4) } isMovie={true} />)}<Poster/> </Section>}
+     rating={movie.vote_average} year={movie.release_date && movie.release_date.substring(0,4) } isMovie={true} />)}<EmptySpace/> </Section>}
     {tvResults && tvResults.length > 0 && <Section title="TV Show Results">{tvResults.map( show => <Poster key={show.id} id={show.id}
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
      year={show.first_air_date && show.first_air_date.substring(0,4) } 
-     />)}<Poster/> </Section>}
+     />)}<EmptySpace/>  </Section>}
     </>}
     {error && <Message color="red" error={error}/>}
     {movieResults && tvResults && movieResults.length === 0 && tvResults.length === 0 &&

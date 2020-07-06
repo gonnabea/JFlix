@@ -33,8 +33,7 @@ const Image = styled.img`
         }
         to{
             width: 500px;
-            
-            box-shadow: 0 0 20px skyblue;
+            box-shadow: 0 0 30px skyblue;
             
         }
     }
@@ -42,7 +41,7 @@ const Image = styled.img`
         from{
             width: 500px;
              
-            box-shadow: 0 0 20px skyblue;
+            box-shadow: 0 0 30px skyblue;
             
         }
         to{
@@ -135,8 +134,8 @@ function mouseOn(e){
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
-    e.target.style.animation = "hoverImgOut 0.3s forwards";
-    infoBox[1].style.animation = "hideInfos 0.3s forwards";
+    e.target.style.animation = "hoverImgOut 0.5s forwards";
+    infoBox[1].style.animation = "hideInfos 0.5s forwards";
 }
 
 export default Poster;

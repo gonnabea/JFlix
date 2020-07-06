@@ -67,7 +67,9 @@ const Overview = styled.p`
     color:rgba(255,255,255,0.7);
     line-height: 1.5;
     width: 50%;
-`
+`;
+
+
 
 const DetailPresenter = ({result, error, loading}) => (
     loading ? (
@@ -85,9 +87,7 @@ const DetailPresenter = ({result, error, loading}) => (
             {result.original_title ? result.original_title : result.original_name}
         </Title>
         <ItemContainer>
-        <Item>{result.release_date 
-        ? result.release_date.substring(0, 4) 
-        : result.first_air_date.substring(0, 4)}
+        <Item>{result.release_date ? result.release_date.substring(0, 4) : ""}
         </Item>
         <Divider>.</Divider>
         <Item>
