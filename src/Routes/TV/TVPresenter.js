@@ -6,6 +6,7 @@ import Loader from "../../Components/Loader";
 import Message from "Components/Message";
 import Poster from "../../Components/Poster";
 import EmptySpace from "Components/EmptySpace";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
 padding: 20px 20px;
@@ -18,7 +19,11 @@ const TVPresenter = ({
     loading,
     error}) => loading ? <Loader /> : <Container>
         {topRated && topRated.length > 0 && 
-        (<Section title="Top Rated TV Shows" >
+        (
+        <Section title="Top Rated TV Shows" >
+        <Helmet>
+            <title>TV | Nomflix-Jiwon</title>
+        </Helmet>
             {topRated.map( show => <Poster key={show.id} id={show.id}
      imageUrl={show.poster_path} 
      title={show.original_name} 

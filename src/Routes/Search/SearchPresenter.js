@@ -6,6 +6,7 @@ import Section from "../../Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster"
 import EmptySpace from "../../Components/EmptySpace";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 0px 1%;
@@ -61,6 +62,9 @@ const SearchPresenter = ({
     handleSubmit,
     updateTerm
 }) => <Container>
+    <Helmet>
+            <title>Search | Nomflix-Jiwon</title>
+        </Helmet>
     <Form onSubmit={handleSubmit}>
     <Input type="text" placeholder="Search Movies or TV Shows..." value={searchTerm} onChange={updateTerm}/>
     </Form>

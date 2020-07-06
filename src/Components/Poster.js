@@ -40,9 +40,7 @@ const Image = styled.img`
     @keyframes hoverImgOut{
         from{
             width: 500px;
-             
             box-shadow: 0 0 30px skyblue;
-            
         }
         to{
             width: 180px;
