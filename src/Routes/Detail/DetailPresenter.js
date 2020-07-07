@@ -50,13 +50,16 @@ box-shadow: 0 0 20px white;
 z-index: 100;
 margin-bottom: 30px;
 display: flex;
-justify-content: center;
+flex-wrap: nowrap;
+overflow-x: auto;
 @keyframes showPopUp{
     from{
-        height: 50px;
+        height: 0px;
+        opacity: 0;
     }
     to{        
         height: 600px;
+        opacity: 1;
     }
 }
 @keyframes hidePopUp{
@@ -64,7 +67,8 @@ justify-content: center;
         height: 600px;
     }
     to{
-        height: 50px;
+        height: 0px;
+        opacity: 0;
     }
 }
 `
@@ -97,13 +101,17 @@ const Overview = styled.p`
     width: 50%;
 `;
 
-const HideVideoBtn = styled.button`
-    
+const HideVideoBtn = styled.span`
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    height: 30px;
+    opacity: 0.7;
 `
 const ShowVideoBtn = styled.button`
 `
-
-
 const DetailPresenter = ({result, error, loading}) => (
     loading ? (
         <>
@@ -119,9 +127,14 @@ const DetailPresenter = ({result, error, loading}) => (
         </Helmet>
         <Backdrop 
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
-        <VideoContainer >
-        <iframe width="90%" height="100%" src={result.videos.results[0].key ? `https://www.youtube.com/embed/${result.videos.results[0].key}?autoplay=1` : ""} frameborder="0" title="Youtube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-        <HideVideoBtn onClick={hidePopUp}/>
+        <VideoContainer id="videoContainer"> 
+        {result.videos.results.map( (video,index) => video ? 
+            <iframe width="100%" height="100%" style={{flex:"0 0 auto"}}
+        src={`https://www.youtube.com/embed/${video.key}?autoplay=${index===0 ? 1 : 0}`} 
+        frameborder="0" title="Youtube" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen=""></iframe> : null)}
+        <HideVideoBtn role="img" aria-label="button" onClick={hidePopUp}>❌</HideVideoBtn>
         </VideoContainer>
     <Content>
         <Cover  bgImage={result.poster_path ? 
@@ -166,13 +179,13 @@ DetailPresenter.propTypes = {
 }
 
 const showPopUp = (e) => {
-    
-    // e.target.parentNode.parentNode.style.animation = "showPopUp 0.5s forwards"
+    const videoContainer = document.getElementById("videoContainer")
+    videoContainer.style.animation = "showPopUp 0.3s forwards ease-in-out";
 
 }
 
 const hidePopUp = (e) => {
-    e.target.parentNode.style.animation = "hidePopUp 0.5s forwards"
+    e.target.parentNode.style.animation = "hidePopUp 0.3s forwards ease-in-out"
 }
 
 export default DetailPresenter;
