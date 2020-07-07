@@ -47,9 +47,9 @@ Welcome!
  - JS
 
  - [ ] Recently viewed (local-storage)
- - [ ] Remember Play Time (local-storage)
- - [ ] Video Play when hovered
+ - [ ] Video Play when hovered on main areas
  - [ ] Movie OST Search API
+ - [ ] Search Form on the Header
 
  - ETC
  = [ ] Footer

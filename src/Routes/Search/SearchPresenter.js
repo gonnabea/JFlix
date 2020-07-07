@@ -14,6 +14,8 @@ const Container = styled.div`
 
 const Form = styled.form`
 width: 98%;
+position: relative;
+top: 50px;
 `;
 
 const Input = styled.input`
@@ -23,6 +25,7 @@ margin-bottom: 30px;
 border-radius: 10px;
 padding-left: 15px;
 width: 30%;
+height: 60px;
 border-bottom: solid 1px orange;
 animation: nonFocused 0.5s forwards;
 :focus{

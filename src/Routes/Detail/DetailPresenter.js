@@ -41,6 +41,33 @@ const Cover = styled.div`
     border-radius: 5px;
 `;
 
+const VideoContainer = styled.div`
+position: relative;
+width: 100%;
+height: 600px;
+background-color: rgba(0,0,0,0.7);
+box-shadow: 0 0 20px white;
+z-index: 100;
+margin-bottom: 30px;
+display: flex;
+justify-content: center;
+@keyframes showPopUp{
+    from{
+        height: 50px;
+    }
+    to{        
+        height: 600px;
+    }
+}
+@keyframes hidePopUp{
+    from{
+        height: 600px;
+    }
+    to{
+        height: 50px;
+    }
+}
+`
 const Data = styled.div`
     width: 70%;
     margin-left: 10px;
@@ -70,6 +97,11 @@ const Overview = styled.p`
     width: 50%;
 `;
 
+const HideVideoBtn = styled.button`
+    
+`
+const ShowVideoBtn = styled.button`
+`
 
 
 const DetailPresenter = ({result, error, loading}) => (
@@ -87,6 +119,10 @@ const DetailPresenter = ({result, error, loading}) => (
         </Helmet>
         <Backdrop 
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
+        <VideoContainer >
+        <iframe width="90%" height="100%" src={result.videos.results[0].key ? `https://www.youtube.com/embed/${result.videos.results[0].key}?autoplay=1` : ""} frameborder="0" title="Youtube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <HideVideoBtn onClick={hidePopUp}/>
+        </VideoContainer>
     <Content>
         <Cover  bgImage={result.poster_path ? 
             `https://image.tmdb.org/t/p/original${result.poster_path}`
@@ -116,6 +152,7 @@ const DetailPresenter = ({result, error, loading}) => (
         <Overview>
             {result.overview}
         </Overview>
+        <ShowVideoBtn onClick={() => showPopUp(VideoContainer)}> Watch Trailers </ShowVideoBtn>
     </Data>
     </Content>
     </Container>
@@ -126,6 +163,16 @@ DetailPresenter.propTypes = {
     result: PropTypes.object,
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired
+}
+
+const showPopUp = (e) => {
+    
+    // e.target.parentNode.parentNode.style.animation = "showPopUp 0.5s forwards"
+
+}
+
+const hidePopUp = (e) => {
+    e.target.parentNode.style.animation = "hidePopUp 0.5s forwards"
 }
 
 export default DetailPresenter;
