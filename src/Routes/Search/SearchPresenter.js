@@ -24,7 +24,7 @@ font-size: 20px;
 margin-bottom: 30px;
 border-radius: 10px;
 padding-left: 15px;
-width: 30%;
+width: 100%;
 height: 60px;
 border-bottom: solid 1px orange;
 animation: nonFocused 0.5s forwards;
@@ -37,7 +37,13 @@ animation: nonFocused 0.5s forwards;
         align-items: center;
     }
 }
+@media only screen and (min-width: 900px){
 @keyframes focused{
+    from{
+        box-shadow: none;
+        width: 30%;
+    }
+    
     to{
         box-shadow: 5px 5px 10px orange;
         width: 100%;
@@ -52,6 +58,7 @@ animation: nonFocused 0.5s forwards;
         box-shadow: none;
         width: 30%;
     }
+}
 }
 `
 

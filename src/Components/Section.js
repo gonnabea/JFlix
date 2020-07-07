@@ -40,6 +40,9 @@ cursor: pointer;
 :hover{
     background-color: black;
 }
+@media only screen and (max-width: 420px){
+    display: none;
+}
 `
 
 const Section = ({title, children}) => (
