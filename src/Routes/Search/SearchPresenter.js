@@ -14,11 +14,11 @@ const Container = styled.div`
 
 const Form = styled.form`
 width: 98%;
-position: relative;
-top: 50px;
 `;
 
 const Input = styled.input`
+position: relative;
+top: 50px;
 all: unset;
 font-size: 20px;
 margin-bottom: 30px;
