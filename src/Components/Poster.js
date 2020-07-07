@@ -21,6 +21,7 @@ const Image = styled.img`
     border-radius: 4px;
     margin-right: 40px;
     z-index:200;
+    animation: hoverImgOut 0.5s forwards;
     :hover{
     
     position: block;
@@ -58,7 +59,6 @@ opacity: 0;
 display: flex;
 flex-direction: column;
 z-index:-1;
-
 @keyframes showInfos{
     to{
         opacity:1;
