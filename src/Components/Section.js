@@ -19,12 +19,11 @@ color: orange;
 const Flex = styled.div`
 margin-top: 25px;
 display: flex;
-/* display: grid; */
-/* grid-template-columns: repeat(auto-fill, 125px); */
 overflow: hidden;
-/* grid-gap: 25px; */
 position: relative;
-
+@media only screen and (max-width: 420px){
+    overflow-x: auto;
+}
 `;
 
 const SlideBtn = styled.button`
@@ -65,7 +64,7 @@ Section.propTypes = {
 
 const sliding = ({e, direction}) => {
     const { parentNode : flexBox } = e.target;
-    const getDirection = direction === "left" ? -800 : 800;
+    const getDirection = direction === "left" ? -660 : 660; // 1 poster 180px + margin right 40px
     flexBox.scroll({
         left:flexBox.scrollLeft + getDirection,
         behavior:"smooth"
