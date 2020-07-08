@@ -179,7 +179,7 @@ const DetailPresenter = ({result, error, loading}) => (
         </Item>
         </ItemContainer>
         <Overview>
-            {result.overview}
+            
         </Overview>
         <ShowVideoBtn onClick={() => showPopUp(VideoContainer)}> Watch Trailers </ShowVideoBtn>
         <InfoTap 

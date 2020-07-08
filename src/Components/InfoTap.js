@@ -14,34 +14,61 @@ const Menu  = styled.button`
 `
 
 const Screen = styled.div`
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
     width: 100%;
-    height: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 30px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    overflow: auto;
+    border-radius: 5px;
+    padding: 0 50px;
 `;
 
-class InfoTap extends Component{
+const LogoImg = styled.img`
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    background-color: white;
+`
 
-    state = {
-        data: ""
+const InfoLine = styled.div`
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height: 40px;
+    justify-content: space-between;
+    border: solid 1px;
+    :hover{
+        background-color: white;
+        color: black;
     }
+    cursor: pointer;
+`
 
-    componentDidMount(){
-        console.log(this.props)
+class InfoTap extends Component{
+    state = {
+        data: this.props.overview
     }
 
     select = (selected) => {
-        console.log(selected)
+        
         if(selected === "overview"){
             this.setState({data: this.props.overview})
         }
         else if(selected === "companies"){
             const companies = this.props.companies.map( company => {
-                return <h2>{company.name}</h2>
+            return <InfoLine>{company.name} {company.logo_path !== null ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} alt="logo_image"/> : null} </InfoLine>
             })
             this.setState({data: companies})
         }
         else{
-            const countries = this.props.countries.map( country => <h2>{country.name}</h2>);
+            const countries = this.props.countries.map( country => <InfoLine>{`${country.name} (${country.iso_3166_1})`}</InfoLine>);
             this.setState({data: countries})
         }
     }
