@@ -47,7 +47,7 @@ const Cover = styled.div`
         width: 300px;
         height: 400px;
     }
-    @media only screen and (max-width: 420px){
+    @media only screen and (max-width: 700px){
         display: none;
     }
 `;
@@ -100,12 +100,50 @@ overflow-x: auto;
 
 @media only screen and (max-width: 900px){
     height: 400px;
+    @keyframes showPopUp{
+    from{
+        height: 0px;
+        opacity: 0;
+    }
+    to{        
+        height: 400px;
+        opacity: 1;
+    }
+}
+@keyframes hidePopUp{
+    from{
+        height: 400px;
+    }
+    to{
+        height: 0px;
+        opacity: 0;
+    }
+}
 }
 
 @media only screen and (max-width: 420px){
     height: 300px;
+    @keyframes showPopUp{
+    from{
+        height: 0px;
+        opacity: 0;
+    }
+    to{        
+        height: 300px;
+        opacity: 1;
+    }
 }
-
+@keyframes hidePopUp{
+    from{
+        height: 300px;
+    }
+    to{
+        height: 0px;
+        opacity: 0;
+    }
+}
+}
+@media only screen and (min-width: 901px){
 @keyframes showPopUp{
     from{
         height: 0px;
@@ -124,6 +162,7 @@ overflow-x: auto;
         height: 0px;
         opacity: 0;
     }
+}
 }
 `
 const HideVideoBtn = styled.div`

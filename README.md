@@ -40,7 +40,7 @@ Welcome!
  - [ ] Preview modal animation (https://tympanus.net/Development/ExpandingGridItemAnimation/)
  - [ ] Interactive grid loading animation (https://tympanus.net/Development/GridLoadingAnimations/#)
  - [ ] Menu style (https://tympanus.net/Development/LineMenuStyles/)
- - [ ] Loading effect (https://tympanus.net/Development/CreativeLoadingEffects/)
+ - [x] Loading effect (https://tympanus.net/Development/CreativeLoadingEffects/)
  - [ ] Unfolding 3D Thumbnails Concept (https://tympanus.net/Development/Unfolding3DThumbnailsConcept/)
  - [ ] https://tympanus.net/Tutorials/RapidImageHoverMenu/
 
