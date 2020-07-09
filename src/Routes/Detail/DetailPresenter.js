@@ -78,13 +78,13 @@ const Item = styled.div`
 const Divider = styled.span`
     margin: 0 10px;
 `
-const Overview = styled.p`
-    font-size: 12px;
-    color:rgba(255,255,255,0.7);
-    line-height: 1.5;
-    width: 50%;
-    margin-bottom: 20px;
-`;
+// const Overview = styled.p`
+//     font-size: 12px;
+//     color:rgba(255,255,255,0.7);
+//     line-height: 1.5;
+//     width: 50%;
+//     margin-bottom: 20px;
+// `;
 
 const VideoContainer = styled.div`
 position: relative;

@@ -32,9 +32,7 @@ const Screen = styled.div`
     overflow: auto;
     border-radius: 5px;
     padding: 50px 20px 20px 0;
-    @media only screen and (max-width: 420px){
-    width: 100%;
-}
+    
 `;
 
 const LogoImg = styled.img`
@@ -79,10 +77,7 @@ display: flex;
 align-self: center;
 `
 
-const SeasonCount = styled.span``
 
-const SeasonOverview = styled.p`
-`
 
 class InfoTap extends Component{
     state = {
