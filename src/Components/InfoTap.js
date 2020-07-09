@@ -11,7 +11,10 @@ display: flex;
 `;
 
 const Menu  = styled.button`
-
+    padding: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
 `
 
 const Screen = styled.div`
@@ -28,7 +31,7 @@ const Screen = styled.div`
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
-    padding: 50px 0 0 0;
+    padding: 50px 20px 20px 0;
     @media only screen and (max-width: 420px){
     width: 100%;
 }
@@ -59,6 +62,28 @@ const InfoLine = styled.div`
     }
 `
 
+const SeasonContainer = styled.section`
+display: flex;
+overflow-x: auto;
+`
+
+const SeasonInfo = styled.section`
+    
+`
+const SeasonPoster = styled.img`
+    width: 100px;
+    height: 150px;
+`
+const SeasonName = styled.span`
+display: flex;
+align-self: center;
+`
+
+const SeasonCount = styled.span``
+
+const SeasonOverview = styled.p`
+`
+
 class InfoTap extends Component{
     state = {
         data: this.props.overview
@@ -75,9 +100,18 @@ class InfoTap extends Component{
             })
             this.setState({data: companies})
         }
-        else{
+        else if(selected === "countries"){
             const countries = this.props.countries.map( country => <InfoLine>{`${country.name} (${country.iso_3166_1})`}</InfoLine>);
             this.setState({data: countries})
+        }
+        else{
+            const seasons = this.props.seasons.map( season => 
+            <SeasonInfo>
+                <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : ""} alt="poster_path" />
+                <SeasonName>{season.name}</SeasonName>
+                
+            </SeasonInfo>);
+            this.setState({data: <SeasonContainer>{seasons}</SeasonContainer>})
         }
     }
 
@@ -88,6 +122,7 @@ class InfoTap extends Component{
                     <Menu onClick={() => this.select("overview")}>Overview</Menu>
                     <Menu onClick={() => this.select("companies")}>Companies</Menu>
                     <Menu onClick={() => this.select("countries")}>Countries</Menu>
+                    <Menu onClick={() => this.select("seasons")}>Seasons</Menu>
                 </MenuLine>
                 <Screen>
                    {this.state.data}

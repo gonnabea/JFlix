@@ -72,7 +72,7 @@ margin: 20px 0;
 `
 
 const Item = styled.div`
-
+    font-size: 18px;
 `
 
 const Divider = styled.span`
@@ -177,6 +177,9 @@ const HideVideoBtn = styled.div`
 `
 
 const ShowVideoBtn = styled.button`
+margin-bottom: 20px;
+padding: 5px;
+font-weight: 700;
 `
 
 const IMDBLink = styled.a`
@@ -224,13 +227,13 @@ const DetailPresenter = ({result, error, loading}) => (
         <ItemContainer>
         <Item>{result.release_date ? result.release_date.substring(0, 4) : ""}
         </Item>
-        <Divider>.</Divider>
+        <Divider>-</Divider>
         <Item>
         {result.runtime 
         ? result.runtime
         : "" || result.episode_run_time} min
         </Item>
-        <Divider>.</Divider>
+        <Divider>-</Divider>
         <Item>
         {result.genres && 
             result.genres.map((genre, index) => 
@@ -239,14 +242,15 @@ const DetailPresenter = ({result, error, loading}) => (
                     : `${genre.name} / `)}
         </Item>
         </ItemContainer>
-        <Overview>
-            
-        </Overview>
+        <Item style={{color: "yellow", marginBottom: "20px"}}>
+            ★ {result.vote_average}  ( {result.vote_count} people voted )
+        </Item>
         <ShowVideoBtn onClick={() => showPopUp(VideoContainer)}> Watch Trailers </ShowVideoBtn>
         <InfoTap 
         overview = {result.overview} 
         companies = {result.production_companies} 
         countries = {result.production_countries} 
+        seasons = {result.seasons}
         />
         
     </Data>
