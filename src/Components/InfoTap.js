@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
+   
 
 `;
 
 const MenuLine = styled.header`
-
+display: flex;
 `;
 
 const Menu  = styled.button`
@@ -23,15 +24,17 @@ const Screen = styled.div`
     align-items: center;
     line-height: 30px;
     font-size: 20px;
-    color: white;
+    color: orange;
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
-    padding: 0 50px;
+    @media only screen and (max-width: 420px){
+    width: 300px
+}
 `;
 
 const LogoImg = styled.img`
-    width: 40px;
+    width: 50px;
     height: 40px;
     margin-left: 20px;
     background-color: white;
@@ -41,14 +44,18 @@ const InfoLine = styled.div`
     display: flex;
     align-items: center;
     width: 320px;
-    height: 40px;
+    
     justify-content: space-between;
     border: solid 1px;
+    padding: 5px;
     :hover{
         background-color: white;
         color: black;
     }
     cursor: pointer;
+    @media only screen and (max-width: 320px){
+        width: 300px;
+    }
 `
 
 class InfoTap extends Component{
@@ -77,9 +84,9 @@ class InfoTap extends Component{
         return(
             <Container>
                 <MenuLine>
-                    <Menu onClick={() => this.select("overview")}>Description</Menu>
-                    <Menu onClick={() => this.select("companies")}>Production Companies</Menu>
-                    <Menu onClick={() => this.select("countries")}>Production Countries</Menu>
+                    <Menu onClick={() => this.select("overview")}>Overview</Menu>
+                    <Menu onClick={() => this.select("companies")}>Companies</Menu>
+                    <Menu onClick={() => this.select("countries")}>Countries</Menu>
                 </MenuLine>
                 <Screen>
                    {this.state.data}

@@ -10,6 +10,9 @@ const Container = styled.div`
     width: 100%;
     position: relative;
     padding: 50px;
+    @media only screen and (max-width: 600px){
+        padding: 50px 10px;
+    }
 `
 const Backdrop = styled.div`
   position: absolute;
@@ -40,17 +43,28 @@ const Cover = styled.div`
     background-size: cover;
     height: 100%;
     border-radius: 5px;
+    @media only screen and (max-width: 900px){
+        width: 300px;
+        height: 400px;
+    }
+    @media only screen and (max-width: 420px){
+        display: none;
+    }
 `;
 
 const Data = styled.div`
     width: 70%;
     margin-left: 10px;
+    @media only screen and (max-width: 420px){
+        width: 100%;
+    }
 `;
 
 const Title = styled.h1`
  font-size: 32px;
  font-weight: 700;
  margin-bottom: 20px;
+ width: 100%;
 `
 const ItemContainer = styled.div`
 display: flex;
@@ -83,6 +97,14 @@ margin-bottom: 100px;
 display: flex;
 flex-wrap: nowrap;
 overflow-x: auto;
+
+@media only screen and (max-width: 900px){
+    height: 400px;
+}
+
+@media only screen and (max-width: 420px){
+    height: 300px;
+}
 
 @keyframes showPopUp{
     from{
