@@ -28,8 +28,9 @@ const Screen = styled.div`
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
+    padding: 50px 0 0 0;
     @media only screen and (max-width: 420px){
-    width: 300px
+    width: 100%;
 }
 `;
 
@@ -44,7 +45,7 @@ const InfoLine = styled.div`
     display: flex;
     align-items: center;
     width: 320px;
-    
+    margin: 0 20px;
     justify-content: space-between;
     border: solid 1px;
     padding: 5px;
