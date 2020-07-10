@@ -15,7 +15,7 @@ const Image = styled.img`
     background-image: url(${props => props.bgUrl});
     width: 200px;
     height: 100%;
-    background-size: contain;
+    background-size: 180px;
     background-repeat: no-repeat;
     background-position: left;
     border-radius: 4px;
@@ -100,7 +100,7 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) =>
         <ImageContainer>
             <Image onMouseOver={(e) => mouseOn(e)} 
             onMouseOut={(e) => mouseOut(e)} 
-            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : ""} />
+            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} />
             <Infos>
             <Title>{title}</Title>
             <Rating>

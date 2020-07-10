@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Season from "./Season";
 
 const Container = styled.section`
    
@@ -61,12 +62,19 @@ const InfoLine = styled.div`
 `
 
 const SeasonContainer = styled.section`
-display: flex;
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-gap: 10px;
 overflow-x: auto;
+
 `
 
 const SeasonInfo = styled.section`
-    
+    display: flex;
+    flex-direction: column;
+    background-color: white;   
+    color: black; 
+    cursor: pointer;
 `
 const SeasonPoster = styled.img`
     width: 100px;
@@ -77,11 +85,25 @@ display: flex;
 align-self: center;
 `
 
+const ExitBtn = styled.div`
+position: fixed;
+top: 70px;
+right: 50px;
+font-size: 25px;
+color: white;
+z-index: 1000;
+display: none;
+cursor: pointer;
+color: pink;
+`
+
 
 
 class InfoTap extends Component{
     state = {
-        data: this.props.overview
+        data: this.props.overview,
+        season: null,
+        display: "none"
     }
 
     select = (selected) => {
@@ -101,8 +123,8 @@ class InfoTap extends Component{
         }
         else{
             const seasons = this.props.seasons.map( season => 
-            <SeasonInfo>
-                <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : ""} alt="poster_path" />
+            <SeasonInfo onClick={() => this.callSeason(season)}>
+                <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} alt="poster_path" />
                 <SeasonName>{season.name}</SeasonName>
                 
             </SeasonInfo>);
@@ -110,7 +132,19 @@ class InfoTap extends Component{
         }
     }
 
+    callSeason = (season) => {
+        const exitBtn = document.getElementById("exitBtn");
+        exitBtn.style.display = "block";
+        this.setState({season, display:"flex"})
+    }
+    
+    exitSeason = (e) => {
+        this.setState({display: "none"})
+        e.target.style.display= "none";
+    }
+
     render(){
+
         return(
             <Container>
                 <MenuLine>
@@ -122,6 +156,8 @@ class InfoTap extends Component{
                 <Screen>
                    {this.state.data}
                 </Screen>
+                <ExitBtn onClick={this.exitSeason} id="exitBtn">X</ExitBtn>
+                <Season season={this.state.season} display={this.state.display} />
             </Container>
         )
     }

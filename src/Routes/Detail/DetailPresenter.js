@@ -216,7 +216,7 @@ const DetailPresenter = ({result, error, loading}) => (
     <Content>
         <Cover  bgImage={result.poster_path ? 
             `https://image.tmdb.org/t/p/original${result.poster_path}`
-            : ""} />
+            : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} />
     <Data>
         <Title>
             {result.original_title ? result.original_title : result.original_name}
@@ -269,11 +269,13 @@ const showPopUp = (e) => {
     const videoContainer = document.getElementById("videoContainer")
     videoContainer.style.animation = "showPopUp 0.3s forwards ease-in-out";
     videoContainer.style.marginBottom = "100px"
+    
 }
 
 const hidePopUp = (e) => {
     e.target.parentNode.style.animation = "hidePopUp 0.3s forwards ease-in-out";
     e.target.parentNode.style.marginBottom = "0px"
+    e.target.style.top= "0px";
 }
 
 export default DetailPresenter;
