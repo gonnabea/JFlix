@@ -173,7 +173,7 @@ const HideVideoBtn = styled.div`
     position: fixed;
     height: 30px;
     opacity: 0.5;
-    
+    z-index: 10;
 `
 
 const ShowVideoBtn = styled.button`
@@ -211,7 +211,7 @@ const DetailPresenter = ({result, error, loading}) => (
         frameborder="0" title="Youtube" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen=""></iframe> : null)}
-        <HideVideoBtn role="img" aria-label="close" onClick={hidePopUp}>Hide Videos X</HideVideoBtn>
+        <HideVideoBtn role="img" aria-label="close" id="hideVideoBtn" onClick={hidePopUp}>Hide Videos X</HideVideoBtn>
         </VideoContainer>
     <Content>
         <Cover  bgImage={result.poster_path ? 
@@ -266,10 +266,11 @@ DetailPresenter.propTypes = {
 }
 
 const showPopUp = (e) => {
-    const videoContainer = document.getElementById("videoContainer")
+    const videoContainer = document.getElementById("videoContainer");
+    const hideVideoBtn = document.getElementById("hideVideoBtn");
     videoContainer.style.animation = "showPopUp 0.3s forwards ease-in-out";
     videoContainer.style.marginBottom = "100px"
-    
+    hideVideoBtn.style.top= "50px";
 }
 
 const hidePopUp = (e) => {
