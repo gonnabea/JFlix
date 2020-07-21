@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Season from "./Season";
 
 const Container = styled.section`
-   
 
 `;
 
@@ -32,7 +31,7 @@ const Screen = styled.div`
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
-    padding: 50px 20px 20px 0;
+    padding: 0px 20px 0px 20px;
     
 `;
 
@@ -75,26 +74,29 @@ const SeasonInfo = styled.section`
     background-color: white;   
     color: black; 
     cursor: pointer;
+    width: 150px;
 `
 const SeasonPoster = styled.img`
-    width: 100px;
+    width: 150px;
     height: 150px;
 `
 const SeasonName = styled.span`
 display: flex;
 align-self: center;
+text-align: center;
 `
 
 const ExitBtn = styled.div`
 position: absolute;
-top: 70px;
-right: 50px;
 font-size: 25px;
 color: white;
 z-index: 1000;
 display: none;
 cursor: pointer;
 color: pink;
+top: 30px;
+right: 30px;
+
 `
 
 
@@ -150,8 +152,8 @@ class InfoTap extends Component{
                 <MenuLine>
                     <Menu onClick={() => this.select("overview")}>Overview</Menu>
                     <Menu onClick={() => this.select("companies")}>Companies</Menu>
-                    <Menu onClick={() => this.select("countries")}>Countries</Menu>
-                    <Menu onClick={() => this.select("seasons")}>Seasons</Menu>
+                    {this.props.countries ? <Menu onClick={() => this.select("countries")}>Countries</Menu> : null}
+                    {this.props.seasons ? <Menu onClick={() => this.select("seasons")}>Seasons</Menu> : null}
                 </MenuLine>
                 <Screen>
                    {this.state.data}

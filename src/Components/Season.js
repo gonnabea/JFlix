@@ -5,7 +5,7 @@ const Container = styled.section`
     width: 100%;
     position: absolute;
     display:${props => props.display};
-    justify-content: center;
+   
     align-items: center;
     background-color: rgba(0,0,0,0.9);
     top: 0;
@@ -35,11 +35,22 @@ const AirDate = styled.span`
 const Overview = styled.p`
     line-height: 30px;
     width: 90%;
+    height: 200px;
+    overflow: auto;
+    font-size: 15px;
+    @media only screen and (max-width: 600px){
+        width: 300px;
+    }
 `
 const Poster = styled.img`
     width: 200px;
     height: 300px;
     margin-right: 20px;
+    @media only screen and (max-width: 600px){
+        width: 150px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
 `;
 
 const Count = styled.span`

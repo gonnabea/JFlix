@@ -41,10 +41,6 @@ class TVContainer extends Component{
         
         return(
             <>
-            <p>TV</p>
-            <li>
-                <Link to="/tv/popular">Popular</Link>
-            </li>
             <TVPresenter 
             topRated={topRated}
             popular={popular}
