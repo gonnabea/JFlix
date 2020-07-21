@@ -86,7 +86,7 @@ align-self: center;
 `
 
 const ExitBtn = styled.div`
-position: fixed;
+position: absolute;
 top: 70px;
 right: 50px;
 font-size: 25px;
@@ -132,7 +132,7 @@ class InfoTap extends Component{
         }
     }
 
-    callSeason = (season) => {
+    callSeason = (season,e) => {
         const exitBtn = document.getElementById("exitBtn");
         exitBtn.style.display = "block";
         this.setState({season, display:"flex"})

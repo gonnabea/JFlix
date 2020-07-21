@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
-    width: 100vw;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     display:${props => props.display};
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0,0.9);
-    top: 50px;
+    top: 0;
     left: 0;
     z-index: 999;
+    @media only screen and (max-width: 600px){
+        flex-direction: column;
+    }
 `
 const Content = styled.div`
 display: flex;
