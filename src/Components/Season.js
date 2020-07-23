@@ -5,10 +5,10 @@ const Container = styled.section`
     width: 100%;
     position: absolute;
     display:${props => props.display};
-   
+    border-radius: 20px;
     align-items: center;
     background-color: rgba(0,0,0,0.9);
-    top: 0;
+    top: -50px;
     left: 0;
     z-index: 999;
     @media only screen and (max-width: 600px){

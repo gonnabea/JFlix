@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TVPresenter from "./TVPresenter";
 import { tvApi } from "api";
-import { Link } from "react-router-dom";
 
 class TVContainer extends Component{
 

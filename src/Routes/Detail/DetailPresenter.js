@@ -208,9 +208,9 @@ const DetailPresenter = ({result, error, loading}) => (
         {result.videos.results.map( (video,index) => video ? 
             <iframe width="100%" height="100%" style={{flex:"0 0 auto"}}
         src={`https://www.youtube.com/embed/${video.key}?autoplay=${index===0 ? 1 : 0}`} 
-        frameborder="0" title="Youtube" 
+        frameBorder="0" title="Youtube" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen=""></iframe> : null)}
+        allowFullScreen></iframe> : null)}
         <HideVideoBtn role="img" aria-label="close" id="hideVideoBtn" onClick={hidePopUp}>Hide Videos X</HideVideoBtn>
         </VideoContainer>
     <Content>

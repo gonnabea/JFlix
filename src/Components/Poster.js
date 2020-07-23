@@ -98,8 +98,8 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) =>
     <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
             <Container>
         <ImageContainer>
-            <Image onMouseOver={(e) => mouseOn(e)} 
-            onMouseOut={(e) => mouseOut(e)} 
+            <Image onMouseEnter={(e) => mouseOn(e)} 
+            onMouseLeave={(e) => mouseOut(e)} 
             bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} />
             <Infos>
             <Title>{title}</Title>
@@ -132,8 +132,8 @@ function mouseOn(e){
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
-    e.target.style.animation = "hoverImgOut 0.5s forwards";
-    infoBox[1].style.animation = "hideInfos 0.5s forwards";
+    e.target.style.animation = "hoverImgOut 0.1s forwards";
+    infoBox[1].style.animation = "hideInfos 0s forwards";
 }
 
 export default Poster;
