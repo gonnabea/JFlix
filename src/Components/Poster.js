@@ -42,10 +42,11 @@ const Image = styled.img`
         from{
             width: 500px;
             box-shadow: 0 0 30px skyblue;
+            z-index: -999;
         }
         to{
             width: 180px;
-             
+            z-index:200;
         }
     }
 `
@@ -67,12 +68,11 @@ z-index:-1;
 }
 @keyframes hideInfos{
     from{
-        opacity:1;
         left: 200px;
     }
     to{
-        opacity: 0;
         left: 0;
+        z-index: 0;
     }
 }
 `
@@ -132,8 +132,8 @@ function mouseOn(e){
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
-    e.target.style.animation = "hoverImgOut 0.1s forwards";
-    infoBox[1].style.animation = "hideInfos 0s forwards";
+    e.target.style.animation = "hoverImgOut 0s forwards"; //버그 fix 필요
+    infoBox[1].style.animation = "hideInfos 0.3s forwards";
 }
 
 export default Poster;

@@ -21,7 +21,8 @@ export const moviesApi = {
         params:{
             query: encodeURIComponent(searchingBy)
         }
-    })
+    }),
+    company: (id) => api.get(`company/${id}`)
 
 }
 
@@ -38,6 +39,7 @@ export const tvApi = {
         params:{
             query: encodeURIComponent(searchingBy)
         }
-    })
+    }),
+    company: (id) => api.get(`company/${id}`)
 
 }

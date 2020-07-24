@@ -189,7 +189,7 @@ width: 80px;
 height: 30px;
 
 `
-const DetailPresenter = ({result, error, loading}) => (
+const DetailPresenter = ({result, error, loading, companies}) => (
     loading ? (
         <>
         <Helmet>
@@ -248,7 +248,7 @@ const DetailPresenter = ({result, error, loading}) => (
         <ShowVideoBtn onClick={() => showPopUp(VideoContainer)}> Watch Trailers </ShowVideoBtn>
         <InfoTap 
         overview = {result.overview} 
-        companies = {result.production_companies} 
+        companies = {companies} 
         countries = {result.production_countries} 
         seasons = {result.seasons}
         />

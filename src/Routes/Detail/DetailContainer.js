@@ -5,6 +5,7 @@ import { moviesApi, tvApi } from "../../api";
 class DetailContainer extends Component{
 
     constructor(props) {
+        console.log(props)
         super(props);
         const {location: { pathname }} = props;
         this.state = {
@@ -12,11 +13,14 @@ class DetailContainer extends Component{
          error: null,  
          loading: true,
          isMovie: pathname.includes("/movie/"),
-         isTV: pathname.includes("/tv/")
+         isTV: pathname.includes("/tv/"),
+         companies: null
         }
     }
 
     async componentDidMount(){
+        let companiesID = [];
+        let companies = [];
         const {
             match: {
                 params: { id }
@@ -31,8 +35,8 @@ class DetailContainer extends Component{
         let result = null;
         if(isMovie){
             try{
-               ({data: result}= await moviesApi.movieDetail(parsedId));
-               
+               ({data: result} = await moviesApi.movieDetail(parsedId));
+
             }
             catch{
                 this.setState({error:"Can't find anyting"})
@@ -53,21 +57,30 @@ class DetailContainer extends Component{
                 this.setState({loading: false, result})
             }
         }
+        for(let i = 0; i < result.production_companies.length; i++){
+            companiesID.push(result.production_companies[i].id)
+            companies.push((await moviesApi.company(companiesID[i])).data)
+        } // Get Movie Companies' Details
+        console.log(result)
+        console.log(companiesID)
+        this.setState({companies})
     }
 
     render(){
         const { 
             result,
+            companies,
             error,
             loading
         } = this.state
-        console.log(result)
-        
+        console.log(companies)
         return(
             <DetailPresenter 
             result={result}
             error={error}
-            loading={loading}/>
+            loading={loading}
+            companies={companies}
+            />
         )
     }
 }

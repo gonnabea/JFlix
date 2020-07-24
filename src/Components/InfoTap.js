@@ -25,13 +25,16 @@ const Screen = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    line-height: 30px;
+    line-height: 120%;
     font-size: 20px;
     color: orange;
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 50px 0px 50px;
+    @media screen and (max-width: 600px){
+        font-size: 17px;
+    }
     
 `;
 
@@ -42,7 +45,7 @@ const LogoImg = styled.img`
     background-color: white;
 `
 
-const InfoLine = styled.div`
+const InfoLine = styled.a`
     display: flex;
     align-items: center;
     width: 320px;
@@ -78,7 +81,7 @@ const SeasonInfo = styled.section`
 `
 const SeasonPoster = styled.img`
     width: 150px;
-    height: 150px;
+    height: 200px;
 `
 const SeasonName = styled.span`
 display: flex;
@@ -99,6 +102,13 @@ right: 30px;
 
 `
 
+const Company = styled.div`
+display:flex;
+flex-direction: column;
+justify-content:space-around;
+align-items: center;
+`
+
 
 
 class InfoTap extends Component{
@@ -115,7 +125,17 @@ class InfoTap extends Component{
         }
         else if(selected === "companies"){
             const companies = this.props.companies.map( company => {
-            return <InfoLine>{company.name} {company.logo_path !== null ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} alt="logo_image"/> : null} </InfoLine>
+            return (
+            <Company>
+            <span style={{fontSize:"13px", color:"pink"}}>{company.headquarters}</span>
+            <InfoLine target="_blank" href={company.homepage === "" ? null : company.homepage}> {/*set Company's homepage link*/}
+                {company.name} 
+                {company.logo_path !== null 
+                ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} 
+                alt="logo_image"/> : null} 
+            </InfoLine>
+            </Company>
+            )
             })
             this.setState({data: companies})
         }
@@ -131,7 +151,7 @@ class InfoTap extends Component{
                 
             </SeasonInfo>);
             this.setState({data: <SeasonContainer>{seasons}</SeasonContainer>})
-        }
+        } // Info Menu Select Treat
     }
 
     callSeason = (season,e) => {
