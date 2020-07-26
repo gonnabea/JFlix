@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Container = styled.section`
     width: 100%;
@@ -76,6 +77,11 @@ class Season extends Component{
         }
         return "";
     }   
+}
+
+Season.propTypes = {
+    season: PropTypes.string,
+    display: PropTypes.string
 }
 
 export default Season;

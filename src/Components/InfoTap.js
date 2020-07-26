@@ -25,15 +25,17 @@ const Screen = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    line-height: 120%;
-    font-size: 20px;
-    color: orange;
+    line-height: 150%;
+    font-size: 17px;
+    color: white;
     font-weight: 500;
     overflow: auto;
     border-radius: 5px;
     padding: 0px 50px 0px 50px;
     @media screen and (max-width: 600px){
         font-size: 17px;
+        line-height: 120%;
+        padding: 100px 0px 0px 0px;
     }
     
 `;
@@ -57,7 +59,7 @@ const InfoLine = styled.a`
         background-color: white;
         color: black;
     }
-    cursor: pointer;
+    cursor: ${props => props.homepage ? "pointer": "auto"};
     @media only screen and (max-width: 320px){
         width: 300px;
     }
@@ -97,9 +99,14 @@ z-index: 1000;
 display: none;
 cursor: pointer;
 color: pink;
-top: 30px;
+top: 10px;
 right: 30px;
 
+`
+
+const CompanyLine = styled.div`
+display: flex;
+flex-direction: column;
 `
 
 const Company = styled.div`
@@ -127,9 +134,11 @@ class InfoTap extends Component{
             const companies = this.props.companies.map( company => {
             return (
             <Company>
-            <span style={{fontSize:"13px", color:"pink"}}>{company.headquarters}</span>
-            <InfoLine target="_blank" href={company.homepage === "" ? null : company.homepage}> {/*set Company's homepage link*/}
+            <InfoLine homepage={company.homepage} target="_blank" href={company.homepage === "" ? null : company.homepage}> {/*set Company's homepage link*/}
+                <CompanyLine>
                 {company.name} 
+            <span style={{fontSize:"13px", color:"pink"}}>{company.headquarters}</span>
+                </CompanyLine>
                 {company.logo_path !== null 
                 ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} 
                 alt="logo_image"/> : null} 

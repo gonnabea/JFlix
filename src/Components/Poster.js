@@ -132,7 +132,7 @@ function mouseOn(e){
 
 function mouseOut(e){
     const {childNodes : infoBox } = e.target.parentNode;
-    e.target.style.animation = "hoverImgOut 0s forwards"; //버그 fix 필요
+    e.target.style.animation = "hoverImgOut 0s forwards"; //버그 fix v
     infoBox[1].style.animation = "hideInfos 0.3s forwards";
 }
 

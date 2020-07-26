@@ -4,7 +4,7 @@ const api = axios.create({
     baseURL : "https://api.themoviedb.org/3/",
     params:{
         api_key: "6363d423c535019ac0a49bfc571cc2df",
-        language: "en-US"
+        language: "ko-KR"
     }
 })
 
@@ -40,6 +40,6 @@ export const tvApi = {
             query: encodeURIComponent(searchingBy)
         }
     }),
-    company: (id) => api.get(`company/${id}`)
-
+    company: (id) => api.get(`company/${id}`),
+    credits: (id) => api.get(`tv/${id}/credits`)
 }
