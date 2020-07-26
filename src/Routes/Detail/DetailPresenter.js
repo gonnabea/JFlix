@@ -6,10 +6,10 @@ import Helmet from "react-helmet";
 import InfoTap from "Components/InfoTap";
 
 const Container = styled.div`
+    padding: 10vh 50px;
     height: calc(100vh - 50px);
     width: 100%;
     position: relative;
-    padding: 50px;
     @media only screen and (max-width: 600px){
         padding: 50px 10px;
     }
@@ -92,7 +92,6 @@ width: 100%;
 height: 600px;
 background-color: rgba(0,0,0,0.7);
 box-shadow: 0 0 20px white;
-z-index: 100;
 margin-bottom: 100px;
 display: flex;
 flex-wrap: nowrap;
@@ -167,13 +166,13 @@ overflow-x: auto;
 `
 const HideVideoBtn = styled.div`
     right: 20px;
-    top: 60px;
-    font-size: 30px;
+    top: 2.5vh;
+    font-size: 25px;
     cursor: pointer;
     position: fixed;
     height: 30px;
-    opacity: 0.5;
-    z-index: 10;
+    z-index: 999;
+    color: black;
 `
 
 const ShowVideoBtn = styled.button`
@@ -270,7 +269,8 @@ const showPopUp = (e) => {
     const hideVideoBtn = document.getElementById("hideVideoBtn");
     videoContainer.style.animation = "showPopUp 0.3s forwards ease-in-out";
     videoContainer.style.marginBottom = "100px"
-    hideVideoBtn.style.top= "50px";
+    hideVideoBtn.style.top= "10vh";
+    hideVideoBtn.style.color = "white";
 }
 
 const hidePopUp = (e) => {

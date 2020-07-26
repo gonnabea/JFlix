@@ -9,7 +9,7 @@ import Helmet from "react-helmet";
 import EmptySpace from "Components/EmptySpace"
 
 const Container = styled.div`
-  padding: 20px 20px;
+  padding: 10vh 20px;
 `;
 
 

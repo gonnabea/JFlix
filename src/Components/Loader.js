@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 0;
     height: 0;
-    border-top: 120px solid orange;
+    border-top: 120px solid white;
     border-right: 120px solid transparent;
     border-left: 120px solid transparent;
     

@@ -9,7 +9,7 @@ import EmptySpace from "../../Components/EmptySpace";
 import { Helmet } from "react-helmet";
 
 const Container = styled.div`
-  padding: 0px 1%;
+  padding: 10vh 1%;
 `;
 
 const Form = styled.form`

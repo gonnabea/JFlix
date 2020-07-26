@@ -9,7 +9,7 @@ import EmptySpace from "Components/EmptySpace";
 import { Helmet } from "react-helmet";
 
 const Container = styled.div`
-padding: 20px 20px;
+padding: 10vh 20px;
 `
 
 const TVPresenter = ({

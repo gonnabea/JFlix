@@ -3,39 +3,24 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
-color: white;
+background-color: rgba(255,255,255,0.9);
 height: 50px;
 display: flex;
 align-items: center;
-box-shadow: 0 0 10px skyblue;
+box-shadow: 0 0 20px #45E7B6;
 animation: mouseOut 0.3s forwards;
 position: fixed;
 top: 0;
 width: 100vw;
-font-size: 15px;
-font-weight: 700;
-z-index: 999;
+font-size: 18px;
+z-index: 100;
+height: 10vh;
+font-weight: 500;
 :hover{
-    color: white;
-    animation: mouseOn 0.3s forwards;
+    background-color: rgba(255,255,255,1);
+    transition: background-color 0.3s;
 }
 
-@keyframes mouseOn{
-    from{
-        background-color: rgba(20,20,20,1);
-    }
-    to{
-        background-color: #801DFD;
-    }
-}
-@keyframes mouseOut{
-    from{
-        background-color: #801DFD;
-    }
-    to{
-        background-color: rgba(20,20,20,1);
-    }
-}
 `
 
 const List = styled.ul`
@@ -53,12 +38,14 @@ justify-content: center;
 
 const SLink = styled(Link)`
 height: 100%;
+color: black;
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-background-color: ${props => props.current ? "#801DFD" : "tansparent"};
-border-bottom: ${props => props.current ? "solid 2px skyblue" : "none"};
+border-radius: 15px;
+background-color: ${props => props.current ? "#45E7B6" : "tansparent"};
+border-bottom: ${props => props.current ? "solid 2px white" : "none"};
 transition: border-bottom 0.1s ease-in-out;
 :hover{
     
