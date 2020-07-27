@@ -1,43 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import Loader from "./3dCube";
 
-const Container = styled.div`
-    width: 0;
-    height: 0;
-    border-top: 120px solid white;
-    border-right: 120px solid transparent;
-    border-left: 120px solid transparent;
-    
-    font-size: 40px;
-    position: absolute;
-    right: -120px;
-    top: 50px;
-`;
-
-const Loader = styled.div`
-width: 60px;
-height: 60px;
-    border-top: 10px solid red;
-    border-right: 10px solid white;
-    border-left: 10px solid orange;
-    border-bottom: 10px solid skyblue; 
-border-radius: 30px;
-
-position: absolute;
-top: -90px;
-right: 30px;
-animation: turnLoader 1s infinite;
-@keyframes turnLoader{
-        0%{
-            transform: rotateZ(0deg)
-        }
-        100%{
-            transform: rotateZ(360deg)
-        }
-    }
+const Container = styled.section`
+width: 100vw;
+height: 100vh;
+top: 0;
+position: fixed;
+display: flex;
+justify-content:center;
+align-items: center;
+filter:drop-shadow(16px 16px 20px #45E7B6) ;
 `
 
-export default () => <Container>
-    <Loader>
+const LoadingMsg = styled.p`
+width: 100%;
+height: 100%;
+font-size: 25px;
+font-weight: 700;
+display: flex;
+justify-content: center;
+align-items: center;
+`
 
-    </Loader></Container>;
+
+
+export default () => 
+<Container>
+    <Loader 
+    width={"250px"} 
+    frontBg={"black"} 
+    front={<LoadingMsg>Now Loading...</LoadingMsg>}
+    left={<LoadingMsg>Now Loading...</LoadingMsg>}
+    right={<LoadingMsg>Now Loading...</LoadingMsg>}
+    back={<LoadingMsg>Now Loading...</LoadingMsg>}
+    top={<LoadingMsg>Now Loading...</LoadingMsg>}
+    bottom={<LoadingMsg>Now Loading...</LoadingMsg>}
+    />
+</Container>;

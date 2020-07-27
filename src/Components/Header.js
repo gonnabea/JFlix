@@ -64,19 +64,18 @@ align-items: center;
 justify-content: center;
 border-radius: 15px;
 background-color: ${props => props.current ? "#45E7B6" : "tansparent"};
-border-bottom: ${props => props.current ? "solid 2px white" : "none"};
-transition: border-bottom 0.1s ease-in-out;
+transition: background-color 0.5s ease-in-out;
 :hover{
     
 }
 `
 
-const CubeContainer = styled.div`
- width: 100vw;
- height: 10vh;
- display: flex;
- justify-content: center;
-`
+// const CubeContainer = styled.div`
+//  width: 100vw;
+//  height: 10vh;
+//  display: flex;
+//  justify-content: center;
+// `
 
 export default withRouter(({location: {pathname}}) => (
     

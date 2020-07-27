@@ -31,7 +31,6 @@ position: sticky;
 ${ props => props.direction ==="right" ? {right:"0"} : {left:"0"}};
 top:0;
 height: 250px;
-z-index: 100;
 background-color: rgba(0,0,0,0.3);
 font-size: 50px;
 color: white;
