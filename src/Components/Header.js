@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+// import Cube from "./3dCube";
 
 const Header = styled.header`
 background-color: rgba(255,255,255,0.9);
@@ -21,11 +22,29 @@ font-weight: 500;
     transition: background-color 0.3s;
 }
 
+@keyframes showHeader {
+    from{
+        top: -100px;
+    }
+    to{
+        top: 0px;
+    }
+}
+
+@keyframes hideHeader {
+    from{
+        top: 0px;
+    }
+    to{
+        top: -100px;
+    }
+}
+
 `
 
 const List = styled.ul`
 display: flex;
-
+margin-left: 20px;
 `
 
 const Item = styled.li`
@@ -52,12 +71,18 @@ transition: border-bottom 0.1s ease-in-out;
 }
 `
 
-
+const CubeContainer = styled.div`
+ width: 100vw;
+ height: 10vh;
+ display: flex;
+ justify-content: center;
+`
 
 export default withRouter(({location: {pathname}}) => (
     
-    <Header>
+    <Header id="header">
         {console.log(pathname)}
+        {/* {HeaderAnimation()} */}
         <List>
             <Item >
                 <SLink current={pathname === "/"} to="/">Movie</SLink>
@@ -69,5 +94,10 @@ export default withRouter(({location: {pathname}}) => (
                 <SLink current={pathname === "/search"} to="/search">Search</SLink>
             </Item>
         </List>
+        {/* <CubeContainer>
+
+        <Cube width={50} front={"앞면"} frontBg={"blue"} />
+        </CubeContainer> */}
     </Header>
 ))
+

@@ -56,8 +56,9 @@ const InfoLine = styled.a`
     border: solid 1px;
     padding: 5px;
     :hover{
-        background-color: white;
-        color: black;
+        background-color: rgba(255,255,255,0.2);
+        color: white;
+
     }
     cursor: ${props => props.homepage ? "pointer": "auto"};
     @media only screen and (max-width: 320px){
@@ -116,6 +117,10 @@ justify-content:space-around;
 align-items: center;
 `
 
+const Headquarter = styled.span`
+
+`;
+
 
 
 class InfoTap extends Component{
@@ -137,7 +142,7 @@ class InfoTap extends Component{
             <InfoLine homepage={company.homepage} target="_blank" href={company.homepage === "" ? null : company.homepage}> {/*set Company's homepage link*/}
                 <CompanyLine>
                 {company.name} 
-            <span style={{fontSize:"13px", color:"pink"}}>{company.headquarters}</span>
+            <Headquarter style={{fontSize:"13px", color:"#45E7B6"}}>{company.headquarters}</Headquarter>
                 </CompanyLine>
                 {company.logo_path !== null 
                 ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} 

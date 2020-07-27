@@ -100,7 +100,7 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) =>
         <ImageContainer>
             <Image onMouseEnter={(e) => mouseOn(e)} 
             onMouseLeave={(e) => mouseOut(e)} 
-            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} />
+            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "No_Image.png"} />
             <Infos>
             <Title>{title}</Title>
             <Rating>
