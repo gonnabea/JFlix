@@ -9,7 +9,7 @@ const Container = styled.section`
     border-radius: 20px;
     align-items: center;
     background-color: rgba(0,0,0,0.9);
-    top: -50px;
+    top: calc( -10vh + 50px );
     left: 0;
     z-index: 999;
     @media only screen and (max-width: 600px){
@@ -36,7 +36,7 @@ const AirDate = styled.span`
 const Overview = styled.p`
     line-height: 30px;
     width: 90%;
-    height: 200px;
+    max-height: 200px;
     overflow: auto;
     font-size: 15px;
     @media only screen and (max-width: 600px){

@@ -28,7 +28,7 @@ align-items: center;
 export default () => 
 <Container>
     <Loader 
-    width={"250px"} 
+    width={"300px"} 
     frontBg={"black"} 
     front={<LoadingMsg>Now Loading...</LoadingMsg>}
     left={<LoadingMsg>Now Loading...</LoadingMsg>}

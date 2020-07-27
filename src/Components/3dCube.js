@@ -60,7 +60,7 @@ const Left = styled.div`
     width: ${props => props.width};
     height: ${props => props.width};
     position:absolute;
-    transform: rotateY(90deg) translateZ(calc(${props => props.width}/-2)) scaleX(-1); /* scaleY: 글자 상하 반전 */
+    transform: rotateY(90deg) translateZ(calc(${props => props.width}/-2)) scaleX(-1); 
 `;
 
 const Right = styled.div`

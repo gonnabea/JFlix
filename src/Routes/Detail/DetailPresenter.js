@@ -221,9 +221,10 @@ const DetailPresenter = ({result, error, loading, companies}) => (
         <Title>
             {result.original_title ? result.original_title : result.original_name}
         </Title>
+        {result.imdb_id ?
         <IMDBLink href={`https://www.imdb.com/title/${result.imdb_id}`} target="_blank">
             <IMDBLogo src="/IMDb.jpg"></IMDBLogo>
-        </IMDBLink>
+        </IMDBLink> : null}
         <ItemContainer>
         <Item>{result.release_date ? result.release_date.substring(0, 4) : ""}
         </Item>
