@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import InfoTap from "Components/InfoTap";
+import Carousel from "../../Components/Carousel";
 
 const Container = styled.div`
     padding: 10vh 50px;
@@ -205,12 +206,16 @@ const DetailPresenter = ({result, error, loading, companies}) => (
         <Backdrop 
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
         <VideoContainer id="videoContainer"> 
-        {result.videos.results.map( (video,index) => video ? 
+        
+        <Carousel contents={
+            result.videos.results.map( (video,index) => video ? 
             <iframe width="100%" height="100%" style={{flex:"0 0 auto"}}
         src={`https://www.youtube.com/embed/${video.key}?autoplay=${index===0 ? 1 : 0}`} 
         frameBorder="0" title="Youtube" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowFullScreen></iframe> : null)}
+        allowFullScreen></iframe> : null)
+        } />
+
         <HideVideoBtn role="img" aria-label="close" id="hideVideoBtn" onClick={hidePopUp}>Hide Videos X</HideVideoBtn>
         </VideoContainer>
     <Content>

@@ -7,6 +7,7 @@ import Message from "Components/Message";
 import Poster from "Components/Poster"
 import EmptySpace from "../../Components/EmptySpace";
 import { Helmet } from "react-helmet";
+import Carousel from "Components/Carousel";
 
 const Container = styled.div`
   padding: 10vh 1%;
@@ -78,12 +79,26 @@ const SearchPresenter = ({
     <Form onSubmit={handleSubmit}>
     <Input type="text" placeholder="Search Movies or TV Shows..." value={searchTerm} onChange={updateTerm}/>
     </Form>
+    <Carousel />
     {loading ? <Loader/> : <>
-    {movieResults && movieResults.length > 0 && <Section title="Movie Results">{movieResults.map( movie => <Poster key={movie.id} id={movie.id}
-     imageUrl={movie.poster_path} 
-     title={movie.original_title} 
-     rating={movie.vote_average} year={movie.release_date && movie.release_date.substring(0,4) } isMovie={true} />)}<EmptySpace/> </Section>}
-    {tvResults && tvResults.length > 0 && <Section title="TV Show Results">{tvResults.map( show => <Poster key={show.id} id={show.id}
+    {movieResults && movieResults.length > 0 
+    && <Section 
+    title="Movie Results">
+        {movieResults.map( movie => 
+            <Poster 
+                key={movie.id} 
+                id={movie.id}
+                imageUrl={movie.poster_path} 
+                title={movie.original_title} 
+                rating={movie.vote_average} 
+                year={movie.release_date && movie.release_date.substring(0,4) } 
+                isMovie={true} 
+                />
+        )}
+     <EmptySpace/> 
+     </Section>}
+    {tvResults && tvResults.length > 0 
+    && <Section title="TV Show Results">{tvResults.map( show => <Poster key={show.id} id={show.id}
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
