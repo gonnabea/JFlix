@@ -127,11 +127,12 @@ const Headquarter = styled.span`
 
 const CreatorInfo = styled.div`
     width: 100%;
-    
+    height: 90%;
 `;
 
 const CreatorImg = styled.img`
-    width: 100%;
+    width: 300px;
+    height: 90%;
 `;
 
 const CreatorName = styled.p`
@@ -186,13 +187,13 @@ class InfoTap extends Component{
         else if(selected === "creators"){
             const creators = this.props.creators.map( creator => 
                 <CreatorInfo>
-                    <CreatorImg src={`https://image.tmdb.org/t/p/w300${creator.profile_path}`} />
+                    <CreatorImg src={creator.profile_path ? `https://image.tmdb.org/t/p/w300${creator.profile_path}` : "/No_Image.png"} />
                     <CreatorName>
                         {creator.name}
                     </CreatorName>
                 </CreatorInfo>
                 )
-            this.setState({data: <Selector contents={creators} />})
+            this.setState({data: <Selector contents={creators} width={"300px"} />})
         }
         
         // Info Menu Select Treat
@@ -218,7 +219,7 @@ class InfoTap extends Component{
                     <Menu onClick={() => this.select("companies")}>Companies</Menu>
                     {this.props.countries ? <Menu onClick={() => this.select("countries")}>Countries</Menu> : null}
                     {this.props.seasons ? <Menu onClick={() => this.select("seasons")}>Seasons</Menu> : null}
-                    {this.props.creators ? <Menu onClick={() => this.select("creators")}>Creators</Menu> : null}
+                    {this.props.creators && this.props.creators.length > 0 ? <Menu onClick={() => this.select("creators")}>Creators</Menu> : null}
                 </MenuLine>
                 <Screen>
                    {this.state.data}

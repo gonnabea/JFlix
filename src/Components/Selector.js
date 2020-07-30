@@ -6,6 +6,9 @@ import styled from "styled-components";
 const Container = styled.section`
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const Contents = styled.main`
@@ -59,7 +62,7 @@ class Selector extends Component {
 
     render(){
         return  <Container>
-            <Contents id="slider" width="100%" height="90%">
+            <Contents id="slider" width={this.props.width} height="90%">
                 {this.props.contents}
             </Contents>
             <Controller id="controlArea">
@@ -78,7 +81,7 @@ class Selector extends Component {
 
 const sliding = (index,e) => {
     console.log(e.target)
-    const slider = e.target.parentNode.parentNode.childNodes[0];
+    const slider = e.target.parentNode.parentNode.childNodes[0]; // 다른 방법 찾아야함..
     const sliderLength = slider.childNodes.length;
 
     slider.scrollTo({

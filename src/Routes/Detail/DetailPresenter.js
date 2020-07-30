@@ -214,7 +214,7 @@ const DetailPresenter = ({result, error, loading, companies}) => (
         frameBorder="0" title="Youtube" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowFullScreen></iframe> : null)
-        } />
+        } width="100%"/>
 
         <HideVideoBtn role="img" aria-label="close" id="hideVideoBtn" onClick={hidePopUp}>Hide Videos X</HideVideoBtn>
         </VideoContainer>
