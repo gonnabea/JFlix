@@ -66,7 +66,7 @@ Section.propTypes = {
 
 const sliding = ({e, direction}) => {
     const { parentNode : flexBox } = e.target;
-    const getDirection = direction === "left" ? -660 : 660; // 1 poster 180px + margin right 40px
+    const getDirection = direction === "left" ? -660 : 660; // 1 poster 180px + margin right 40px, We can fix it later.
     flexBox.scroll({
         left:flexBox.scrollLeft + getDirection,
         behavior:"smooth"

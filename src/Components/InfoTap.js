@@ -43,8 +43,8 @@ const Screen = styled.div`
 `;
 
 const LogoImg = styled.img`
-    width: 50px;
-    height: 40px;
+    width: 100px;
+    height: 80px;
     margin-left: 20px;
     background-color: white;
 `
@@ -169,7 +169,7 @@ class InfoTap extends Component{
             </Company>
             )
             })
-            this.setState({data: companies})
+            this.setState({data: <Selector contents={companies} width={"350px"} />})
         }
         else if(selected === "countries"){
             const countries = this.props.countries.map( country => <InfoLine>{`${country.name} (${country.iso_3166_1})`}</InfoLine>);
@@ -178,7 +178,7 @@ class InfoTap extends Component{
         else if(selected ==="seasons"){
             const seasons = this.props.seasons.map( season => 
             <SeasonInfo onClick={() => this.callSeason(season)}>
-                <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} alt="poster_path" />
+                <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "/No_Image.jpg"} alt="poster_path" />
                 <SeasonName>{season.name}</SeasonName>
                 
             </SeasonInfo>);

@@ -1,4 +1,4 @@
-# Nomflix-Jiwon
+# JFlix
 
 Welcome!
 

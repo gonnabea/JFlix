@@ -66,7 +66,7 @@ class Season extends Component{
         console.log(season)
         if(season){
        return <Container display={display}>
-           <Poster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"}></Poster>
+           <Poster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "/No_Image.jpg"}></Poster>
            <Content>
             <Name>{season.name}</Name>
             <AirDate>{season.air_date}</AirDate>

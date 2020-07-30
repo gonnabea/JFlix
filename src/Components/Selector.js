@@ -69,7 +69,7 @@ class Selector extends Component {
                 {this.state.controlArea}
             </Controller>
             <InfoArea>
-
+            
             </InfoArea>
         </Container>
     }
