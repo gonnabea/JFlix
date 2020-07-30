@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Season from "./Season";
+import Selector from "./Selector";
 
 const Container = styled.section`
 
 `;
 
 const MenuLine = styled.header`
-display: flex;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
 `;
 
 const Menu  = styled.button`
@@ -123,6 +125,19 @@ const Headquarter = styled.span`
 
 `;
 
+const CreatorInfo = styled.div`
+    width: 100%;
+    
+`;
+
+const CreatorImg = styled.img`
+    width: 100%;
+`;
+
+const CreatorName = styled.p`
+
+`;
+
 
 
 class InfoTap extends Component{
@@ -159,7 +174,7 @@ class InfoTap extends Component{
             const countries = this.props.countries.map( country => <InfoLine>{`${country.name} (${country.iso_3166_1})`}</InfoLine>);
             this.setState({data: countries})
         }
-        else{
+        else if(selected ==="seasons"){
             const seasons = this.props.seasons.map( season => 
             <SeasonInfo onClick={() => this.callSeason(season)}>
                 <SeasonPoster src={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} alt="poster_path" />
@@ -167,7 +182,20 @@ class InfoTap extends Component{
                 
             </SeasonInfo>);
             this.setState({data: <SeasonContainer>{seasons}</SeasonContainer>})
-        } // Info Menu Select Treat
+        }
+        else if(selected === "creators"){
+            const creators = this.props.creators.map( creator => 
+                <CreatorInfo>
+                    <CreatorImg src={`https://image.tmdb.org/t/p/w300${creator.profile_path}`} />
+                    <CreatorName>
+                        {creator.name}
+                    </CreatorName>
+                </CreatorInfo>
+                )
+            this.setState({data: <Selector contents={creators} />})
+        }
+        
+        // Info Menu Select Treat
     }
 
     callSeason = (season,e) => {
@@ -190,6 +218,7 @@ class InfoTap extends Component{
                     <Menu onClick={() => this.select("companies")}>Companies</Menu>
                     {this.props.countries ? <Menu onClick={() => this.select("countries")}>Countries</Menu> : null}
                     {this.props.seasons ? <Menu onClick={() => this.select("seasons")}>Seasons</Menu> : null}
+                    {this.props.creators ? <Menu onClick={() => this.select("creators")}>Creators</Menu> : null}
                 </MenuLine>
                 <Screen>
                    {this.state.data}

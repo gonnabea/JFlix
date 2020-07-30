@@ -1,3 +1,5 @@
+// Your each content should be wrapped in tag ! that will be used as a seperator - Jiwon -
+
 import React, { Component } from "react";
 import styled from "styled-components";
 
@@ -24,7 +26,7 @@ const Order = styled.button`
     border:none;
     color: rgb(27%, 91%, 71%);
     background-color: black;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
     :hover{
         color: white;
@@ -37,18 +39,19 @@ const InfoArea = styled.div`
 `; // this is optional
 
 
-class Carousel extends Component {
+class Selector extends Component {
     
     state = {
         controlArea: [],
-        contents: null
+        contents: this.props.contents
     }
-
-    async componentDidMount(contents){
-        const contentsLength = document.getElementById("slider").childNodes.length;
+    async componentDidMount(){
+        console.log(this.state.contents);
+        const { contents } = this.state;
+        const contentsLength = contents.length;
         let orders = [];
         for( let i=0; i < contentsLength ; i++){
-            orders.push(<Order onClick={() => sliding(i)}>{i+1}</Order>)
+            orders.push(<Order onClick={(e) => sliding(i,e)}>{i+1}</Order>)
         }
         this.setState({ controlArea: orders, contents});
         
@@ -73,8 +76,9 @@ class Carousel extends Component {
 
 
 
-const sliding = (index) => {
-    const slider = document.getElementById("slider");
+const sliding = (index,e) => {
+    console.log(e.target)
+    const slider = e.target.parentNode.parentNode.childNodes[0];
     const sliderLength = slider.childNodes.length;
 
     slider.scrollTo({
@@ -83,4 +87,4 @@ const sliding = (index) => {
     });
 }
 
-export default Carousel;
+export default Selector;

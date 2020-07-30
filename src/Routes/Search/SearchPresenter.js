@@ -7,7 +7,6 @@ import Message from "Components/Message";
 import Poster from "Components/Poster"
 import EmptySpace from "../../Components/EmptySpace";
 import { Helmet } from "react-helmet";
-import Carousel from "Components/Carousel";
 
 const Container = styled.div`
   padding: 10vh 1%;
@@ -79,7 +78,6 @@ const SearchPresenter = ({
     <Form onSubmit={handleSubmit}>
     <Input type="text" placeholder="Search Movies or TV Shows..." value={searchTerm} onChange={updateTerm}/>
     </Form>
-    <Carousel />
     {loading ? <Loader/> : <>
     {movieResults && movieResults.length > 0 
     && <Section 

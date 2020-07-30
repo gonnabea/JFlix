@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
 import InfoTap from "Components/InfoTap";
-import Carousel from "../../Components/Carousel";
+import Selector from "../../Components/Selector";
 
 const Container = styled.div`
     padding: 10vh 50px;
@@ -207,7 +207,7 @@ const DetailPresenter = ({result, error, loading, companies}) => (
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
         <VideoContainer id="videoContainer"> 
         
-        <Carousel contents={
+        <Selector contents={
             result.videos.results.map( (video,index) => video ? 
             <iframe width="100%" height="100%" style={{flex:"0 0 auto"}}
         src={`https://www.youtube.com/embed/${video.key}?autoplay=${index===0 ? 1 : 0}`} 
@@ -257,6 +257,7 @@ const DetailPresenter = ({result, error, loading, companies}) => (
         companies = {companies} 
         countries = {result.production_countries} 
         seasons = {result.seasons}
+        creators = {result.created_by}
         />
         
     </Data>

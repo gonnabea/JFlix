@@ -70,12 +70,6 @@ transition: background-color 0.5s ease-in-out;
 }
 `
 
-// const CubeContainer = styled.div`
-//  width: 100vw;
-//  height: 10vh;
-//  display: flex;
-//  justify-content: center;
-// `
 
 export default withRouter(({location: {pathname}}) => (
     
@@ -93,10 +87,7 @@ export default withRouter(({location: {pathname}}) => (
                 <SLink current={pathname === "/search"} to="/search">Search</SLink>
             </Item>
         </List>
-        {/* <CubeContainer>
 
-        <Cube width={50} front={"앞면"} frontBg={"blue"} />
-        </CubeContainer> */}
     </Header>
 ))
 
