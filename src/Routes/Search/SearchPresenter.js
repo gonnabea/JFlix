@@ -90,6 +90,7 @@ const SearchPresenter = ({
                 title={movie.original_title} 
                 rating={movie.vote_average} 
                 year={movie.release_date && movie.release_date.substring(0,4) } 
+                overview={movie.overview}
                 isMovie={true} 
                 />
         )}
@@ -101,6 +102,7 @@ const SearchPresenter = ({
      title={show.original_name} 
      rating={show.vote_average} 
      year={show.first_air_date && show.first_air_date.substring(0,4) } 
+     overview={show.overview}
      />)}<EmptySpace/>  </Section>}
     </>}
     {error && <Message color="red" error={error}/>}

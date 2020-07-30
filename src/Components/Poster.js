@@ -92,15 +92,23 @@ font-size: 25px;
 const Year = styled.span`
     font-size: 18px;
     color:rgba(255,255,255,0.5);
+    margin-bottom: 10px;
 `;
 
-const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) => 
+const Overview = styled.p`
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    overflow: hidden;
+    line-height: 150%;
+`;
+
+const Poster = ({id, imageUrl, title, rating, year, overview, isMovie = false}) => 
     <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
             <Container>
         <ImageContainer>
             <Image onMouseEnter={(e) => mouseOn(e)} 
             onMouseLeave={(e) => mouseOut(e)} 
-            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "No_Image.png"} />
+            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "No_Image.jpg"} />
             <Infos>
             <Title>{title}</Title>
             <Rating>
@@ -110,6 +118,7 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) =>
                 {rating ? `${rating} / 10` : ""}
             </Rating>
         <Year>{year}</Year>
+        <Overview>{overview ? overview.substring(80,0)+"..." : ""}</Overview>
             </Infos>
         </ImageContainer>
     </Container>

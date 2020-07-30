@@ -28,6 +28,7 @@ const TVPresenter = ({
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
+     overview={show.overview}
      year={show.first_air_date ? show.first_air_date.substring(0,4) : "" } 
      />)}<EmptySpace/> </Section>)}
         {popular && popular.length > 0 && 
@@ -36,6 +37,7 @@ const TVPresenter = ({
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
+     overview={show.overview}
      year={show.first_air_date ? show.first_air_date.substring(0,4) : "" } 
      />)}<EmptySpace/> </Section>)}
         {airingTodays && airingTodays.length > 0 && 
@@ -44,6 +46,7 @@ const TVPresenter = ({
      imageUrl={show.poster_path} 
      title={show.original_name} 
      rating={show.vote_average} 
+     overview={show.overview}
      year={show.first_air_date ? show.first_air_date.substring(0,4) : ""} 
      />)}
          <EmptySpace/>   </Section>)}

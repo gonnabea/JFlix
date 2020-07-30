@@ -15,7 +15,7 @@ grid-template-columns: repeat(3, 1fr);
 const Menu  = styled.button`
     padding: 5px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 5px;
 `
 
@@ -27,8 +27,8 @@ const Screen = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    line-height: 150%;
-    font-size: 17px;
+    line-height: 120%;
+    font-size: 20px;
     color: white;
     font-weight: 500;
     overflow: auto;
@@ -187,7 +187,7 @@ class InfoTap extends Component{
         else if(selected === "creators"){
             const creators = this.props.creators.map( creator => 
                 <CreatorInfo>
-                    <CreatorImg src={creator.profile_path ? `https://image.tmdb.org/t/p/w300${creator.profile_path}` : "/No_Image.png"} />
+                    <CreatorImg src={creator.profile_path ? `https://image.tmdb.org/t/p/w300${creator.profile_path}` : "/No_Image.jpg"} />
                     <CreatorName>
                         {creator.name}
                     </CreatorName>

@@ -21,19 +21,26 @@ const HomePresenter = ({
     error,
     loading}) => loading ? <Loader/> :
     <Container>
+        {console.log()}
         <Helmet>
             <title>Movies | Nomflix-Jiwon</title>
         </Helmet>
         {nowPlaying && nowPlaying.length > 0 && (
-            <Section title="Now Playing">{nowPlaying.map( movie =><Poster key={movie.id} id={movie.id} imageUrl={movie.poster_path} title={movie.original_title} rating={movie.vote_average} year={movie.relaese_date ? movie.release_date.substring(0,4) : "" } isMovie={true} />)}<EmptySpace/></Section>
+            <Section title="Now Playing">{nowPlaying.map( movie =><Poster key={movie.id} id={movie.id} imageUrl={movie.poster_path} 
+                title={movie.original_title} rating={movie.vote_average} 
+                year={movie.release_date ? movie.release_date.substring(0,4) : "" } 
+                overview={movie.overview} isMovie={true} />)}<EmptySpace/></Section>
         )}
         {upcoming && upcoming.length > 0 && (
-            <Section title="Upcoming">{upcoming.map( movie => <Poster key={movie.id} id={movie.id} imageUrl={movie.poster_path} title={movie.original_title} rating={movie.vote_average} 
-                year={movie.relaese_date ? movie.release_date.substring(0,4) : ""} isMovie={true} />)}<EmptySpace/></Section>
+            <Section title="Upcoming">{upcoming.map( movie => <Poster key={movie.id} id={movie.id} imageUrl={movie.poster_path} 
+                title={movie.original_title} rating={movie.vote_average} 
+                year={movie.release_date ? movie.release_date.substring(0,4) : ""} overview={movie.overview} 
+                isMovie={true} />)}<EmptySpace/></Section>
         )}
         {popular && popular.length > 0 && (
             <Section title="Popular">{popular.map( movie => <Poster key={movie.id} id={movie.id} imageUrl={movie.poster_path} title={movie.original_title} rating={movie.vote_average} 
-                year={movie.relaese_date ? movie.release_date.substring(0,4) : ""} isMovie={true} />)}<EmptySpace/></Section>
+                year={movie.release_date ? movie.release_date.substring(0,4) : ""} overview={movie.overview} 
+                isMovie={true} />)}<EmptySpace/></Section>
         )}
         {error && <Message color="red" text={error}></Message>}
     </Container>;

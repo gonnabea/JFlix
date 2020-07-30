@@ -221,7 +221,7 @@ const DetailPresenter = ({result, error, loading, companies}) => (
     <Content>
         <Cover  bgImage={result.poster_path ? 
             `https://image.tmdb.org/t/p/original${result.poster_path}`
-            : "https://www.freeiconspng.com/uploads/no-image-icon-21.png"} />
+            : "No_Image.jpg"} />
     <Data>
         <Title>
             {result.original_title ? result.original_title : result.original_name}
