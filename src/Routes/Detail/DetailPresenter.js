@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import Loader from "Components/Loader"
 import Helmet from "react-helmet"
-import InfoTap from "Components/InfoTap"
 import Selector from "../../Components/Selector"
 import DetailNav from "../../Components/DetailNav"
 
