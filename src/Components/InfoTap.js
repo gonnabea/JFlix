@@ -2,21 +2,20 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Season from "./Season";
 import Selector from "./Selector";
+import NeonLineButton from "./NeonLineButton"
 
 const Container = styled.section`
 
 `;
 
 const MenuLine = styled.header`
-display: grid;
-grid-template-columns: repeat(3, 1fr);
+
 `;
 
 const Menu  = styled.button`
-    padding: 5px;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 5px;
+    background-color: transparent;
+    border:none;
+    outline: none;
 `
 
 const Screen = styled.div`
@@ -43,27 +42,29 @@ const Screen = styled.div`
 `;
 
 const LogoImg = styled.img`
-    width: 100px;
-    height: 80px;
-    margin-left: 20px;
+    width: 300px;
+    height: 200px;
+    
     background-color: white;
 `
 
 const InfoLine = styled.a`
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 320px;
+    width: 300px;
     margin: 0 20px;
     justify-content: space-between;
     border: solid 1px;
-    padding: 5px;
+    min-height: 50px;
+    justify-content: center;
     :hover{
         background-color: rgba(255,255,255,0.2);
         color: white;
 
     }
     cursor: ${props => props.homepage ? "pointer": "auto"};
-    @media only screen and (max-width: 320px){
+    @media only screen and (max-width: 600px){
         width: 300px;
     }
 `
@@ -158,13 +159,13 @@ class InfoTap extends Component{
             return (
             <Company>
             <InfoLine homepage={company.homepage} target="_blank" href={company.homepage === "" ? null : company.homepage}> {/*set Company's homepage link*/}
+                {company.logo_path !== null 
+                ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} 
+                alt="logo_image"/> : null} 
                 <CompanyLine>
                 {company.name} 
             <Headquarter style={{fontSize:"13px", color:"#45E7B6"}}>{company.headquarters}</Headquarter>
                 </CompanyLine>
-                {company.logo_path !== null 
-                ? <LogoImg src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} 
-                alt="logo_image"/> : null} 
             </InfoLine>
             </Company>
             )
@@ -193,7 +194,7 @@ class InfoTap extends Component{
                     </CreatorName>
                 </CreatorInfo>
                 )
-            this.setState({data: <Selector contents={creators} width={"300px"} />})
+            this.setState({data: <Selector contents={creators} info={"test"} width={"300px"} />})
         }
         
         // Info Menu Select Treat
@@ -215,11 +216,11 @@ class InfoTap extends Component{
         return(
             <Container>
                 <MenuLine>
-                    <Menu onClick={() => this.select("overview")}>Overview</Menu>
-                    <Menu onClick={() => this.select("companies")}>Companies</Menu>
-                    {this.props.countries ? <Menu onClick={() => this.select("countries")}>Countries</Menu> : null}
-                    {this.props.seasons ? <Menu onClick={() => this.select("seasons")}>Seasons</Menu> : null}
-                    {this.props.creators && this.props.creators.length > 0 ? <Menu onClick={() => this.select("creators")}>Creators</Menu> : null}
+                    <Menu onClick={() => this.select("overview")}><NeonLineButton width="120px" text="Overview" /></Menu>
+                    <Menu onClick={() => this.select("companies")}><NeonLineButton width="120px" text="Companies" /></Menu>
+                    {this.props.countries ? <Menu onClick={() => this.select("countries")}><NeonLineButton width="120px" text="Countries" /></Menu> : null}
+                    {this.props.seasons ? <Menu onClick={() => this.select("seasons")}><NeonLineButton width="120px" text="Seasons" /></Menu> : null}
+                    {this.props.creators && this.props.creators.length > 0 ? <Menu onClick={() => this.select("creators")}><NeonLineButton width="120px" text="Creators" /></Menu> : null}
                 </MenuLine>
                 <Screen>
                    {this.state.data}

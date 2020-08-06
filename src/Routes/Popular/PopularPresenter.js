@@ -1,5 +1,3 @@
+const PopularPresenter = () => null
 
-const PopularPresenter = () => null;
-
-
-export default PopularPresenter;
+export default PopularPresenter
