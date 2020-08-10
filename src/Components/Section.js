@@ -11,9 +11,10 @@ const Container = styled.div`
 `
 
 const Title = styled.cite`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  color: orange;
+  color: skyblue;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 `
 
 const Flex = styled.div`

@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Loader from "./3dCube"
+import Cube from "./3dCube"
 
 const Container = styled.section`
   width: 100vw;
@@ -25,7 +25,7 @@ const LoadingMsg = styled.p`
 
 export default () => (
   <Container>
-    <Loader
+    <Cube
       width={"300px"}
       frontBg={"black"}
       front={<LoadingMsg>Now Loading...</LoadingMsg>}

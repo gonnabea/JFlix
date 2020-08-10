@@ -17,6 +17,8 @@ class DetailContainer extends Component {
       isTV: pathname.includes("/tv/"),
       companies: null,
       currentUrl: this.props.match.url,
+      recommendations: null,
+      credits: null,
     }
   }
 
@@ -38,6 +40,10 @@ class DetailContainer extends Component {
     if (isMovie) {
       try {
         ;({ data: result } = await moviesApi.movieDetail(parsedId))
+        const recommendations = await moviesApi.recommendations(parsedId) // How can i make it simple??
+        console.log(recommendations)
+        const credits = await moviesApi.credits(parsedId)
+        this.setState({ recommendations: recommendations.data.results, credits: credits.data.cast })
       } catch {
         this.setState({ error: "Can't find anyting" })
       } finally {
@@ -46,6 +52,9 @@ class DetailContainer extends Component {
     } else {
       try {
         ;({ data: result } = await tvApi.showDetail(parsedId))
+        const recommendations = await tvApi.recommendations(parsedId)
+        const credits = await tvApi.credits(parsedId)
+        this.setState({ recommendations: recommendations.data.results, credits: credits.data.cast })
       } catch {
         this.setState({ error: "Can't find anyting" })
       } finally {
@@ -62,8 +71,9 @@ class DetailContainer extends Component {
   }
 
   render() {
-    const { result, companies, error, loading, currentUrl } = this.state
-    console.log(companies)
+    const { result, error, loading, companies, currentUrl, recommendations, credits } = this.state
+    console.log(recommendations)
+    console.log(credits)
     return (
       <DetailPresenter
         result={result}
@@ -71,6 +81,8 @@ class DetailContainer extends Component {
         loading={loading}
         companies={companies}
         currentUrl={currentUrl}
+        recommendations={recommendations}
+        credits={credits}
       />
     )
   }

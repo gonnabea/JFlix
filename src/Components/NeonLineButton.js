@@ -1,13 +1,13 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import PropTypes from "prop-types";
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import PropTypes from "prop-types"
 
 const lining = () => keyframes`
     to{
             width:100%;
             height:100%;
         }
-    `;
+    `
 
 const fill = (props) => keyframes`
         50%{    
@@ -23,67 +23,76 @@ const fill = (props) => keyframes`
 `
 
 const Container = styled.a`
-    width: ${props => props.width ? props.width : "100px"};
-    height: calc(${props => props.width ? props.width : "100px"}/3);
-    background-color: transparent;
-    color: ${props => props.color ? props.color : "#21E9FE"};
-    position: relative;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    border: none;
-    outline: none;
-    padding: 0;
-    cursor: pointer;
-    font-family: fantasy;
-    font-size: calc(${props => props.width ? props.width : "100px"} / 6.5 );
-    color: ${props => props.detector ? "black" : props.color || "none" };
-        animation: ${props => props.detector ? fill : null} 0.5s forwards;
-        div:nth-child(n){
-            animation: ${props => props.detector ? lining : null} 0.25s forwards;
-        }
-    :hover{
-        div:nth-child(n){
-            animation: ${lining} 0.5s forwards;
-        }
+  width: ${(props) => (props.width ? props.width : "100px")};
+  height: calc(${(props) => (props.width ? props.width : "100px")} / 3);
+  background-color: transparent;
+  color: ${(props) => (props.color ? props.color : "#21E9FE")};
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: fantasy;
+  font-size: calc(${(props) => (props.width ? props.width : "100px")} / 6.5);
+  color: ${(props) => (props.detector ? "black" : props.color || "none")};
+  animation: ${(props) => (props.detector ? fill : null)} 0.5s forwards;
+  div:nth-child(n) {
+    animation: ${(props) => (props.detector ? lining : null)} 0.25s forwards;
+  }
+  :hover {
+    div:nth-child(n) {
+      animation: ${lining} 0.5s forwards;
     }
-  
-    
-`;
+  }
+  @media screen and (max-width: 420px) {
+    width: 100px;
+  }
+`
 
 const Pseudo = styled.div`
-width: calc(${props => props.width ? props.width : "100px"} /10 );
-height: calc(${props => props.width ? props.width : "100px"} /10 );
-border-left: solid 2px ${props => props.color ? props.color : "#21E9FE"};
-border-top: solid 2px ${props => props.color ? props.color : "#21E9FE"};
-position: absolute;
-left: -1px;
-top: -1px;
-background-color: transparent;
-
-`;
+  width: calc(${(props) => (props.width ? props.width : "100px")} / 10);
+  height: calc(${(props) => (props.width ? props.width : "100px")} / 10);
+  border-left: solid 2px ${(props) => (props.color ? props.color : "#21E9FE")};
+  border-top: solid 2px ${(props) => (props.color ? props.color : "#21E9FE")};
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  background-color: transparent;
+`
 
 const Pseudo2 = styled.div`
-width: calc(${props => props.width ? props.width : "100px"} /10 );
-height: calc(${props => props.width ? props.width : "100px"} /10 );
-border-right: solid 2px ${props => props.color ? props.color : "#21E9FE"};
-border-bottom: solid 2px ${props => props.color ? props.color : "#21E9FE"};
-position: absolute;
-right: -1px;
-bottom: -1px;
-background-color: transparent;
-`;
+  width: calc(${(props) => (props.width ? props.width : "100px")} / 10);
+  height: calc(${(props) => (props.width ? props.width : "100px")} / 10);
+  border-right: solid 2px ${(props) => (props.color ? props.color : "#21E9FE")};
+  border-bottom: solid 2px ${(props) => (props.color ? props.color : "#21E9FE")};
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  background-color: transparent;
+`
 
-const NeonLineButton = ({text, width, color, detector}) => <Container width={width} detector={detector}  color={color}>
-<Pseudo width={width} color={color} />
-{text ? text : "BUTTON"}
-<Pseudo2 width={width} color={color} />
-</Container>
-
-NeonLineButton.propTypes = {
-    text: PropTypes.string,
-    width: PropTypes.string,
-    color: PropTypes.string
+const scroll = () => {
+  setTimeout(() => {
+    window.scrollTo(0, window.outerHeight)
+  }, 100)
 }
 
-export default NeonLineButton;
+const NeonLineButton = ({ text, width, color, detector }) => (
+  <Container onClick={scroll} width={width} detector={detector} color={color}>
+    <Pseudo width={width} color={color} />
+    {text ? text : "BUTTON"}
+    <Pseudo2 width={width} color={color} />
+  </Container>
+)
+
+NeonLineButton.propTypes = {
+  text: PropTypes.string,
+  width: PropTypes.string,
+  color: PropTypes.string,
+  detector: PropTypes.bool,
+}
+
+export default NeonLineButton

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const Container = styled.div`
   position: relative;
@@ -89,4 +90,23 @@ const Cube = ({ width, front, back, bottom, top, left, right, frontBg, leftBg })
   )
 }
 
+Cube.propTypes = {
+  width: PropTypes.string,
+  front: PropTypes.element,
+  back: PropTypes.element,
+  bottom: PropTypes.element,
+  top: PropTypes.element,
+  left: PropTypes.element,
+  right: PropTypes.element,
+  frontBg: PropTypes.string,
+  leftBg: PropTypes.string,
+  backBg: PropTypes.string,
+  bottomBg: PropTypes.string,
+  topBg: PropTypes.string,
+  rightBg: PropTypes.string,
+  bgColorAll: PropTypes.string,
+}
+
 export default Cube
+
+// If you want use this, you have to make Container for this.

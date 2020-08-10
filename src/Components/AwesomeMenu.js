@@ -15,16 +15,14 @@ const A = styled.a`
   padding: 0;
   img {
     display: none;
-    position: relative;
   }
   :hover {
     img {
       display: block;
       animation: showImage 0.3s forwards;
       margin-left: 30px;
-      position: absolute;
+      position: fixed;
       z-index: 10;
-      right: 100px;
     }
   }
   @keyframes showImage {
@@ -48,7 +46,12 @@ const Text = styled.p`
   :hover {
     position: relative;
     animation: repeatMove 1s forwards;
-
+    ::before {
+      content: ${(props) => `"${props.name ? props.name : "Home"}"`};
+      display: block;
+      opacity: 0.3;
+      position: absolute;
+    }
     ::after {
       content: ${(props) => `"${props.name ? props.name : "Home"}"`};
       display: block;
@@ -61,7 +64,7 @@ const Text = styled.p`
       transform: translate(0, 0) skew(0deg, 3deg);
     }
     to {
-      transform: translate(50px, 0) skew(0deg, 3deg);
+      transform: translate(0, 0) scale(1.3) skew(0deg, 3deg);
     }
   }
 `
@@ -72,17 +75,25 @@ const Image = styled.img`
 `
 
 const AwesomeMenu = ({ names, links, imageSrc, descriptions, fontSize, imageWidth, color }) => {
+  const showImage = (e) => {
+    const image = document.getElementsByClassName("image")
+    for (let i = 0; i < image.length; i++) {
+      image[i].style.left = `${e.clientX}px`
+      image[i].style.top = `${e.clientY}px`
+    }
+  }
+
   const init = (names) => {
     const result = names
       ? names.map((name, index) => {
           return (
             <Menu>
               <A target="_blank" imageWidth={imageWidth} href={links[index]}>
-                <Text fontSize={fontSize} name={name} color={color}>
+                <Text onMouseMove={showImage} fontSize={fontSize} name={name} color={color}>
                   {name}
                 </Text>
                 <div>
-                  <Image imageWidth={imageWidth} src={imageSrc[index]} />
+                  <Image className="image" imageWidth={imageWidth} src={imageSrc[index]} />
                 </div>
               </A>
               {descriptions ? descriptions[index] : null}
@@ -108,3 +119,4 @@ AwesomeMenu.propTypes = {
 export default AwesomeMenu
 
 // 사용법 : names, links, imageSrc,를 각각 배열의 형태로 데이터를 보내준다.
+// You should toss props as shape of array.

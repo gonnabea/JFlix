@@ -1,5 +1,5 @@
 // Your each content should be wrapped in tag ! that will be used as a seperator - Jiwon -
-
+// This is kinda trash cause it's so hard to reuse. i'm gonna make another thing later
 import React, { Component } from "react"
 import styled from "styled-components"
 
@@ -9,6 +9,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
 `
 
 const Contents = styled.main`
@@ -19,8 +21,15 @@ const Contents = styled.main`
 `
 
 const Controller = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  width: 100%;
+  @media screen and (max-width: 1050px) {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  @media screen and (max-width: 750px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `
 
 const Order = styled.button`
@@ -60,7 +69,7 @@ class Selector extends Component {
 
   sliding = (index, e) => {
     console.log(e.target)
-    const slider = e.target.parentNode.parentNode.childNodes[0] // 다른 방법 찾아야함..
+    const slider = e.target.parentNode.parentNode.childNodes[0] // 다른 방법 찾아야함.. need to find a better way.
     const sliderLength = slider.childNodes.length
 
     slider.scrollTo({
@@ -72,7 +81,7 @@ class Selector extends Component {
   render() {
     return (
       <Container>
-        <Contents id="slider" width={this.props.width} height="90%">
+        <Contents id="slider" width={this.props.width} height={this.props.height || "90%"}>
           {this.props.contents}
         </Contents>
         <Controller key={this.state.contents} id="controlArea">

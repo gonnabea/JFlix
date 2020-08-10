@@ -5,6 +5,7 @@ import Loader from "Components/Loader"
 import Helmet from "react-helmet"
 import Selector from "../../Components/Selector"
 import DetailNav from "../../Components/DetailNav"
+import NeonLineButton from "../../Components/NeonLineButton"
 
 const Container = styled.div`
   padding: 10vh 50px;
@@ -180,9 +181,17 @@ const HideVideoBtn = styled.div`
 
 const ShowVideoBtn = styled.button`
   margin-bottom: 20px;
-  padding: 5px;
-  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  color: white;
   font-size: 18px;
+  :hover {
+    background-color: white;
+    color: black;
+  }
 `
 
 const IMDBLink = styled.a``
@@ -190,7 +199,15 @@ const IMDBLogo = styled.img`
   width: 80px;
   height: 30px;
 `
-const DetailPresenter = ({ result, error, loading, companies, currentUrl }) =>
+const DetailPresenter = ({
+  result,
+  error,
+  loading,
+  companies,
+  currentUrl,
+  recommendations,
+  credits,
+}) =>
   loading ? (
     <>
       <Helmet>
@@ -259,7 +276,12 @@ const DetailPresenter = ({ result, error, loading, companies, currentUrl }) =>
           <Item style={{ color: "orange", marginBottom: "20px" }}>
             ★ {result.vote_average} ( {result.vote_count} people voted )
           </Item>
-          <ShowVideoBtn onClick={() => showPopUp(VideoContainer)}> Watch Trailers </ShowVideoBtn>
+          <ShowVideoBtn
+            style={{ border: "solid 2px white" }}
+            onClick={() => showPopUp(VideoContainer)}
+          >
+            Trailers
+          </ShowVideoBtn>
           {/* <InfoTap 
         overview = {result.overview} 
         companies = {companies} 
@@ -274,6 +296,8 @@ const DetailPresenter = ({ result, error, loading, companies, currentUrl }) =>
             countries={result.production_countries}
             seasons={result.seasons}
             creators={result.created_by}
+            recommendations={recommendations}
+            credits={credits}
           />
         </Data>
       </Content>
@@ -293,6 +317,13 @@ const showPopUp = (e) => {
   videoContainer.style.marginBottom = "100px"
   hideVideoBtn.style.top = "10vh"
   hideVideoBtn.style.color = "white"
+  setTimeout(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+  }, 300)
 }
 
 const hidePopUp = (e) => {

@@ -25,6 +25,8 @@ export const moviesApi = {
       },
     }),
   company: (id) => api.get(`company/${id}`),
+  credits: (id) => api.get(`/movie/${id}/credits`),
+  recommendations: (id) => api.get(`movie/${id}/recommendations`),
 }
 
 export const tvApi = {
@@ -45,4 +47,5 @@ export const tvApi = {
     }),
   company: (id) => api.get(`company/${id}`),
   credits: (id) => api.get(`tv/${id}/credits`),
+  recommendations: (id) => api.get(`tv/${id}/recommendations`),
 }
