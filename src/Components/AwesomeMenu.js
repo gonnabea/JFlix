@@ -54,6 +54,7 @@ const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "30px")};
   width: fit-content;
   font-family: "Times New Roman", Times, serif;
+  margin-bottom: 10px;
   :hover {
     position: relative;
     animation: repeatMove 1s forwards;

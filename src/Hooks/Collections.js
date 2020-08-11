@@ -41,7 +41,7 @@ const Collections = ({ location }) => {
 
   return loading ? (
     "Now Loading..."
-  ) : collections === {} ? (
+  ) : collections && collections.length > 0 ? (
     <AwesomeMenu
       names={names}
       links={links}
