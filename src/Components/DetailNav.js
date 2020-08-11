@@ -7,7 +7,6 @@ import Companies from "../Routes/Detail/DetailInfos/Companies"
 import Seasons from "../Routes/Detail/DetailInfos/Seasons"
 import CardUI from "./CardUI"
 import Section from "./Section"
-import EmptySpace from "./EmptySpace"
 import Collections from "../Hooks/Collections"
 
 const Container = styled.section``

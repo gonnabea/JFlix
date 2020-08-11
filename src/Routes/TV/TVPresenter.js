@@ -5,7 +5,6 @@ import Section from "../../Components/Section"
 import Loader from "../../Components/Loader"
 import Message from "Components/Message"
 import Poster from "../../Components/Poster"
-import EmptySpace from "Components/EmptySpace"
 import { Helmet } from "react-helmet"
 
 const Container = styled.div`
