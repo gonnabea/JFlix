@@ -18,7 +18,6 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
     <Loader />
   ) : (
     <Container>
-      {console.log()}
       <Helmet>
         <title>Movies | Nomflix-Jiwon</title>
       </Helmet>
@@ -36,7 +35,6 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               isMovie={true}
             />
           ))}
-          <EmptySpace />
         </Section>
       )}
       {upcoming && upcoming.length > 0 && (
@@ -53,7 +51,6 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               isMovie={true}
             />
           ))}
-          <EmptySpace />
         </Section>
       )}
       {popular && popular.length > 0 && (
@@ -70,7 +67,6 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
               isMovie={true}
             />
           ))}
-          <EmptySpace />
         </Section>
       )}
       {error && <Message color="red" text={error}></Message>}

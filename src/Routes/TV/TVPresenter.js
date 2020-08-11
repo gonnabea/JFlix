@@ -33,7 +33,6 @@ const TVPresenter = ({ topRated, popular, airingTodays, loading, error }) =>
               year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
             />
           ))}
-          <EmptySpace />{" "}
         </Section>
       )}
       {popular && popular.length > 0 && (
@@ -49,7 +48,6 @@ const TVPresenter = ({ topRated, popular, airingTodays, loading, error }) =>
               year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
             />
           ))}
-          <EmptySpace />{" "}
         </Section>
       )}
       {airingTodays && airingTodays.length > 0 && (
@@ -65,7 +63,6 @@ const TVPresenter = ({ topRated, popular, airingTodays, loading, error }) =>
               year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
             />
           ))}
-          <EmptySpace />{" "}
         </Section>
       )}
       {error && <Message text={error}></Message>}

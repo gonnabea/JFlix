@@ -13,8 +13,19 @@ const A = styled.a`
   text-decoration: none;
   display: flex;
   padding: 0;
+  position: relative;
+  justify-content: space-between;
   img {
     display: none;
+    @media screen and (max-width: 500px) {
+      display: block;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      right: 0;
+      margin-left: 15px;
+      margin-bottom: 15px;
+    }
   }
   :hover {
     img {
@@ -79,7 +90,7 @@ const AwesomeMenu = ({ names, links, imageSrc, descriptions, fontSize, imageWidt
     const image = document.getElementsByClassName("image")
     for (let i = 0; i < image.length; i++) {
       image[i].style.left = `${e.clientX}px`
-      image[i].style.top = `${e.clientY}px`
+      image[i].style.top = `${e.clientY - 100}px`
     }
   }
 

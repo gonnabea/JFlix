@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import EmptySpace from "./EmptySpace"
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ const Container = styled.div`
 const Title = styled.cite`
   font-size: 24px;
   font-weight: 700;
-  color: skyblue;
+  color: #45e7b6;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 `
 
@@ -36,6 +37,7 @@ const SlideBtn = styled.button`
   font-size: 50px;
   color: white;
   font-weight: 700;
+  z-index: 100;
   cursor: pointer;
   :hover {
     background-color: black;
@@ -45,32 +47,49 @@ const SlideBtn = styled.button`
   }
 `
 
-const Section = ({ title, children }) => (
-  <Container>
-    <Title>{title}</Title>
-    <Flex id="flex">
-      <SlideBtn onClick={(e) => sliding({ e, direction: "left" })} direction="left">{`<`}</SlideBtn>
-      {children}
-      <SlideBtn
-        onClick={(e) => sliding({ e, direction: "right" })}
-        direction="right"
-      >{`>`}</SlideBtn>
-    </Flex>
-  </Container>
-)
+const Section = ({ title, children }) => {
+  let index = 0
+
+  const leftSliding = (e) => {
+    const { parentNode: flexBox } = e.target
+    if (index > 0) {
+      index -= 1
+      flexBox.scrollTo({
+        left: (flexBox.clientWidth / 2) * index,
+        behavior: "smooth",
+      })
+    }
+  }
+
+  const rightSliding = (e) => {
+    const { parentNode: flexBox } = e.target
+    console.log(flexBox.scrollWidth)
+    console.log((flexBox.clientWidth / 2) * index)
+    if (flexBox.scrollWidth > (flexBox.clientWidth / 2) * (index + 2)) {
+      index += 1
+      flexBox.scrollTo({
+        left: (flexBox.clientWidth / 2) * index,
+        behavior: "smooth",
+      })
+    }
+  }
+
+  return (
+    <Container>
+      <Title>{title}</Title>
+      <Flex>
+        <SlideBtn onClick={leftSliding}>{`<`}</SlideBtn>
+        {children}
+        <EmptySpace />
+        <SlideBtn onClick={rightSliding} direction="right">{`>`}</SlideBtn>
+      </Flex>
+    </Container>
+  )
+}
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-}
-
-const sliding = ({ e, direction }) => {
-  const { parentNode: flexBox } = e.target
-  const getDirection = direction === "left" ? -660 : 660 // 1 poster 180px + margin right 40px, We can fix it later.
-  flexBox.scroll({
-    left: flexBox.scrollLeft + getDirection,
-    behavior: "smooth",
-  })
 }
 
 export default Section

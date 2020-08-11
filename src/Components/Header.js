@@ -70,8 +70,6 @@ const SLink = styled(Link)`
 
 export default withRouter(({ location: { pathname } }) => (
   <Header id="header">
-    {console.log(pathname)}
-    {/* {HeaderAnimation()} */}
     <List>
       <Item>
         <SLink current={pathname === "/"} to="/">

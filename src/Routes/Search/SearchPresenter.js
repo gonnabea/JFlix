@@ -101,7 +101,6 @@ const SearchPresenter = ({
                 isMovie={true}
               />
             ))}
-            <EmptySpace />
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
@@ -117,7 +116,6 @@ const SearchPresenter = ({
                 overview={show.overview}
               />
             ))}
-            <EmptySpace />{" "}
           </Section>
         )}
       </>

@@ -45,6 +45,30 @@ const Image = styled.img`
       z-index: 200;
     }
   }
+  @media screen and (max-width: 420px) {
+    height: 90%;
+    background-size: 140px;
+    @keyframes hoverImg {
+      from {
+        width: 140px;
+      }
+      to {
+        width: 300px;
+        box-shadow: 0 0 30px skyblue;
+      }
+    }
+    @keyframes hoverImgOut {
+      from {
+        width: 300px;
+        box-shadow: 0 0 30px skyblue;
+        z-index: -999;
+      }
+      to {
+        width: 140px;
+        z-index: 200;
+      }
+    }
+  }
 `
 
 const Infos = styled.div`

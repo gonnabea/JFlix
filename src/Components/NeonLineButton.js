@@ -74,14 +74,8 @@ const Pseudo2 = styled.div`
   background-color: transparent;
 `
 
-const scroll = () => {
-  setTimeout(() => {
-    window.scrollTo(0, window.outerHeight)
-  }, 100)
-}
-
 const NeonLineButton = ({ text, width, color, detector }) => (
-  <Container onClick={scroll} width={width} detector={detector} color={color}>
+  <Container width={width} detector={detector} color={color}>
     <Pseudo width={width} color={color} />
     {text ? text : "BUTTON"}
     <Pseudo2 width={width} color={color} />

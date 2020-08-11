@@ -33,11 +33,13 @@ const Name = styled.cite`
   font-size: 22px;
   font-family: fantasy;
   margin-bottom: 15px;
+  margin-top: 15px;
 `
 
 const Overview = styled.p`
   font-size: 18px;
   opacity: 0.8;
+  margin-bottom: 15px;
 `
 
 class Seasons extends Component {
@@ -46,7 +48,7 @@ class Seasons extends Component {
   render() {
     const { seasons } = this.props
     console.log(seasons)
-    return seasons ? (
+    return seasons.length !== 0 && seasons ? (
       <Selector
         width="100%"
         contents={seasons.map((season, index) => {
@@ -61,7 +63,11 @@ class Seasons extends Component {
               />
               <InfoArea>
                 <Name>{season.name}</Name>
-                <Overview>{season.overview}</Overview>
+                <Overview>
+                  {season.overview !== ""
+                    ? season.overview.substring(0, 200) + "..."
+                    : "No Synopsis. Sorry!"}
+                </Overview>
               </InfoArea>
             </Container>
           )

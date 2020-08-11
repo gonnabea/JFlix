@@ -5,7 +5,6 @@ import Loader from "Components/Loader"
 import Helmet from "react-helmet"
 import Selector from "../../Components/Selector"
 import DetailNav from "../../Components/DetailNav"
-import NeonLineButton from "../../Components/NeonLineButton"
 
 const Container = styled.div`
   padding: 10vh 50px;

@@ -2,9 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import AwesomeMenu from "../../../Components/AwesomeMenu"
 
-const Container = styled.section`
-  width: 500px;
-`
+const Container = styled.section``
 
 const Companies = ({ companies }) => {
   if (companies && companies.length > 0) {
