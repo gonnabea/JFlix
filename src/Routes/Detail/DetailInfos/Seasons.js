@@ -65,7 +65,7 @@ class Seasons extends Component {
                 <Name>{season.name}</Name>
                 <Overview>
                   {season.overview !== ""
-                    ? season.overview.substring(0, 200) + "..."
+                    ? season.overview.substring(0, 300) + "..."
                     : "No Synopsis. Sorry!"}
                 </Overview>
               </InfoArea>

@@ -6,6 +6,7 @@ import Search from "Routes/Search"
 import Popular from "Routes/Popular"
 import Detail from "Routes/Detail"
 import Header from "./Header"
+import PersonDetail from "../Hooks/PersonDetail"
 
 export default () => (
   <Router>
@@ -17,6 +18,7 @@ export default () => (
       <Route path="/search" exact component={Search} />
       <Route path="/movie/:id" component={Detail} />
       <Route path="/show/:id" component={Detail} />
+      <Route path="/person/:id" component={PersonDetail} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>

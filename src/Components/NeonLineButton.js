@@ -36,7 +36,7 @@ const Container = styled.a`
   padding: 0;
   cursor: pointer;
   font-family: fantasy;
-  font-size: calc(${(props) => (props.width ? props.width : "100px")} / 6.5);
+  font-size: calc(${(props) => (props.width ? props.width : "100px")} / 7);
   color: ${(props) => (props.detector ? "black" : props.color || "none")};
   animation: ${(props) => (props.detector ? fill : null)} 0.5s forwards;
   div:nth-child(n) {

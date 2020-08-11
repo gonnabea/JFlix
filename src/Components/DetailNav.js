@@ -16,11 +16,11 @@ const InfoLine = styled.div`
   justify-content: space-between;
   width: 500px;
   margin-bottom: 20px;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 950px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 500px) {
     width: 320px;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
@@ -72,47 +72,40 @@ const PersonImg = styled.img`
 `
 
 const DetailNav = withRouter(
-  ({
-    currentUrl,
-    location,
-    overview,
-    companies,
-    countries,
-    seasons,
-    creators,
-    recommendations,
-    credits,
-  }) => (
+  ({ currentUrl, location, overview, companies, countries, seasons, recommendations, credits }) => (
     <Container>
       {console.log(recommendations, credits)}
       <InfoLine>
-        <Link to={currentUrl}>
+        <Link style={{ marginRight: "20px" }} to={currentUrl}>
           <NeonLineButton
-            width="120px"
+            width="140px"
             text="Overview"
             color="white"
             detector={location.pathname === currentUrl ? true : false}
           />
         </Link>
-        <Link to={`${currentUrl}/companies`}>
+        <Link style={{ marginRight: "20px" }} to={`${currentUrl}/companies`}>
           <NeonLineButton
-            width="120px"
+            width="140px"
             text="Companies"
             // color="#45E7B6"
             detector={location.pathname === `${currentUrl}/companies` ? true : false}
           />
         </Link>
-        <Link to={{ pathname: `${currentUrl}/collections`, state: recommendations }}>
+        <Link
+          style={{ marginRight: "20px" }}
+          to={{ pathname: `${currentUrl}/collections`, state: recommendations }}
+        >
           <NeonLineButton
-            width="120px"
+            width="140px"
             text="recommend"
             detector={location.pathname === `${currentUrl}/collections` ? true : false}
           />
         </Link>
         {location.pathname.includes("/show") ? (
-          <Link to={`${currentUrl}/seasons`}>
+          <Link style={{ marginRight: "20px" }} to={`${currentUrl}/seasons`}>
             <NeonLineButton
-              width="120px"
+              width="140px"
               text="Season"
               detector={location.pathname === `${currentUrl}/seasons` ? true : false}
             />
@@ -133,29 +126,31 @@ const DetailNav = withRouter(
             <Casts>
               <Section
                 children={credits.map((cast, index) => (
-                  <CardUI
-                    key={index}
-                    main={
-                      <PersonImg
-                        alt="profile"
-                        src={
-                          cast.profile_path
-                            ? `https://image.tmdb.org/t/p/w300${cast.profile_path}`
-                            : "/No_Image.jpg"
-                        }
-                      />
-                    }
-                    textArea={
-                      <CardContainer>
-                        <div>{cast.character}</div>
-                        <div style={{ color: "grey", width: "100%", textAlign: "center" }}>
-                          {cast.name}
-                        </div>
-                      </CardContainer>
-                    }
-                    backgroundColor="black"
-                    borderColor="grey"
-                  />
+                  <Link to={`/person/${cast.id}`}>
+                    <CardUI
+                      key={index}
+                      main={
+                        <PersonImg
+                          alt="profile"
+                          src={
+                            cast.profile_path
+                              ? `https://image.tmdb.org/t/p/w300${cast.profile_path}`
+                              : "/No_Image.jpg"
+                          }
+                        />
+                      }
+                      textArea={
+                        <CardContainer>
+                          <div>{cast.character}</div>
+                          <div style={{ color: "grey", width: "100%", textAlign: "center" }}>
+                            {cast.name}
+                          </div>
+                        </CardContainer>
+                      }
+                      backgroundColor="black"
+                      borderColor="grey"
+                    />
+                  </Link>
                 ))}
               />
             </Casts>

@@ -69,6 +69,7 @@ const SearchPresenter = ({
   error,
   handleSubmit,
   updateTerm,
+  peopleResults,
 }) => (
   <Container>
     <Helmet>
@@ -113,6 +114,24 @@ const SearchPresenter = ({
                 rating={show.vote_average}
                 year={show.first_air_date && show.first_air_date.substring(0, 4)}
                 overview={show.overview}
+                isTV={true}
+              />
+            ))}
+          </Section>
+        )}
+        {peopleResults && peopleResults.length > 0 && (
+          <Section title="People">
+            {peopleResults.map((person) => (
+              <Poster
+                key={person.id}
+                id={person.id}
+                title={person.name}
+                imageUrl={person.profile_path}
+                overview={`
+                Popularity: ${person.popularity} 
+                Job: ${person.known_for_department}
+                `}
+                isPerson={true}
               />
             ))}
           </Section>

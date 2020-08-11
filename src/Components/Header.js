@@ -14,7 +14,7 @@ const Header = styled.header`
   top: 0;
   width: 100vw;
   font-size: 18px;
-  z-index: 100;
+  z-index: 999;
   height: 10vh;
   font-weight: 500;
   :hover {

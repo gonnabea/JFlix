@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import SearchPresenter from "./SearchPresenter"
-import { moviesApi, tvApi } from "../../api"
+import { moviesApi, tvApi, personApi } from "../../api"
 
 class SearchContainer extends Component {
   state = {
@@ -9,6 +9,7 @@ class SearchContainer extends Component {
     searchTerm: "",
     loading: false,
     error: null,
+    peopleResults: null,
   }
 
   handleSubmit = async (e) => {
@@ -38,10 +39,14 @@ class SearchContainer extends Component {
       const {
         data: { results: tvResults },
       } = await tvApi.search(searchTerm)
-      console.log(movieResults, tvResults)
+      const {
+        data: { results: peopleResults },
+      } = await personApi.search(searchTerm)
+      console.log(movieResults, tvResults, peopleResults)
       this.setState({
         movieResults,
         tvResults,
+        peopleResults,
       })
     } catch {
       this.setState({ error: "Can't find result. Please try again 😅" })
@@ -52,7 +57,7 @@ class SearchContainer extends Component {
 
   render() {
     console.log(this.state)
-    const { movieResults, tvResults, searchTerm, loading, error } = this.state
+    const { movieResults, tvResults, peopleResults, searchTerm, loading, error } = this.state
 
     return (
       <SearchPresenter
@@ -63,6 +68,7 @@ class SearchContainer extends Component {
         error={error}
         handleSubmit={this.handleSubmit}
         updateTerm={this.updateTerm}
+        peopleResults={peopleResults}
       />
     )
   }

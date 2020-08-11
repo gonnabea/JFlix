@@ -122,30 +122,54 @@ const Overview = styled.p`
   line-height: 150%;
 `
 
-const Poster = ({ id, imageUrl, title, rating, year, overview, isMovie = false }) => (
-  <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
-    <Container>
-      <ImageContainer>
-        <Image
-          onMouseEnter={(e) => mouseOn(e)}
-          onMouseLeave={(e) => mouseOut(e)}
-          bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "No_Image.jpg"}
-        />
-        <Infos>
-          <Title>{title}</Title>
-          <Rating>
-            <span role="img" aria-label="rating">
-              {rating ? "★" : ""}
-            </span>{" "}
-            {rating ? `${rating} / 10` : ""}
-          </Rating>
-          <Year>{year}</Year>
-          <Overview>{overview ? overview.substring(80, 0) + "..." : ""}</Overview>
-        </Infos>
-      </ImageContainer>
-    </Container>
-  </Link>
-)
+const Poster = ({
+  id,
+  imageUrl,
+  title,
+  rating,
+  year,
+  overview,
+  isMovie = false,
+  isPerson = false,
+  isTV = false,
+}) => {
+  const checkUrl = (id) => {
+    let url
+    if (isMovie === true) url = `/movie/${id}`
+    else if (isTV === true) {
+      url = `/show/${id}`
+    } else if (isPerson === true) {
+      url = `/person/${id}`
+    }
+
+    return url
+  }
+
+  return (
+    <Link to={checkUrl(id)}>
+      <Container>
+        <ImageContainer>
+          <Image
+            onMouseEnter={(e) => mouseOn(e)}
+            onMouseLeave={(e) => mouseOut(e)}
+            bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w500${imageUrl}` : "No_Image.jpg"}
+          />
+          <Infos>
+            <Title>{title}</Title>
+            <Rating>
+              <span role="img" aria-label="rating">
+                {rating ? "★" : ""}
+              </span>{" "}
+              {rating ? `${rating} / 10` : ""}
+            </Rating>
+            <Year>{year}</Year>
+            <Overview>{overview ? overview.substring(80, 0) + "..." : ""}</Overview>
+          </Infos>
+        </ImageContainer>
+      </Container>
+    </Link>
+  )
+}
 
 Poster.propTypes = {
   id: PropTypes.number.isRequired,

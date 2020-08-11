@@ -49,3 +49,13 @@ export const tvApi = {
   credits: (id) => api.get(`tv/${id}/credits`),
   recommendations: (id) => api.get(`tv/${id}/recommendations`),
 }
+
+export const personApi = {
+  person: (id) => api.get(`person/${id}`),
+  search: (query) =>
+    api.get("search/person", {
+      params: {
+        query: encodeURIComponent(query),
+      },
+    }),
+}
