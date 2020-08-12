@@ -7,7 +7,7 @@ import NeonLineButton from "../Components/NeonLineButton"
 
 const Container = styled.section`
   width: 100vw;
-  height: calc(100vh - 80px);
+  margin-top: calc(100vh - 80px);
   display: flex;
   margin: 80px 0 0 0;
   padding: 0;
@@ -74,6 +74,18 @@ const Popularity = styled.div`
   font-weight: 600;
 `
 
+const Biography = styled.p`
+  width: 70%;
+  line-height: 130%;
+  margin-bottom: 20px;
+  font-size: 18px;
+  opacity: 0.8;
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    font-size: 15px;
+  }
+`
+
 const FilmoTitle = styled.div`
   font-size: 20px;
   color: #21e9fe;
@@ -115,6 +127,7 @@ const PersonDetail = ({ match }) => {
   let titles = []
   let links = []
   let poster = []
+  let releaseDate = []
   const id = match.params.id
 
   const getData = async () => {
@@ -160,11 +173,19 @@ const PersonDetail = ({ match }) => {
         return ""
       })
     }
+
+    filmography.cast.map((cast) => {
+      releaseDate.push(cast.release_date || cast.first_air_date)
+    })
   }
 
   const showFilmo = ({ target }) => {
     const filmoArea = document.getElementById("filmoArea")
     filmoArea.style.display = "block"
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    })
   }
 
   const exit = () => {
@@ -179,7 +200,7 @@ const PersonDetail = ({ match }) => {
   return loading ? (
     <Loader />
   ) : (
-    <Container>
+    <Container backDrop={person.profile_path}>
       {console.log(person, filmography)}
       <ProfilePhoto
         src={
@@ -207,12 +228,19 @@ const PersonDetail = ({ match }) => {
           ))}
         </Names>
         {createMenu()}
+        <Biography>{person.biography}</Biography>
         <FilmoTitle onClick={showFilmo}>
           <NeonLineButton text="Filmography" width="140px" color="#21E9FE" />
         </FilmoTitle>
         <FilmoArea id="filmoArea">
           <ExitBtn onClick={exit}>X</ExitBtn>
-          <AwesomeMenu names={titles} links={links} imageSrc={poster} />
+          <AwesomeMenu
+            names={titles}
+            links={links}
+            color="#45e7b6"
+            descriptions={releaseDate}
+            imageSrc={poster}
+          />
         </FilmoArea>
       </InfoArea>
     </Container>
