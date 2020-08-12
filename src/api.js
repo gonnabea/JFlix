@@ -58,4 +58,5 @@ export const personApi = {
         query: encodeURIComponent(query),
       },
     }),
+  movieAndTV: (id) => api.get(`person/${id}/combined_credits`),
 }

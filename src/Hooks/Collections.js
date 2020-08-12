@@ -51,7 +51,7 @@ const Collections = ({ location }) => {
       color="#21E9FE"
     />
   ) : (
-    <span style={{ fontSize: "18px" }}>"No Recommeded Found. Sorry!"</span>
+    <span style={{ fontSize: "18px" }}>No Recommeded Found. Sorry!</span>
   )
 }
 

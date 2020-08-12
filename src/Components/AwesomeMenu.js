@@ -38,10 +38,10 @@ const A = styled.a`
   }
   @keyframes showImage {
     from {
-      width: 0;
+      height: 0;
     }
     to {
-      width: ${(props) => (props.imageWidth ? props.imageWidth : "200px")};
+      height: ${(props) => (props.imageWidth ? props.imageWidth : "200px")};
     }
   }
 `

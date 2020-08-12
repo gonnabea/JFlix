@@ -136,10 +136,10 @@ const Poster = ({
   const checkUrl = (id) => {
     let url
     if (isMovie === true) url = `/movie/${id}`
-    else if (isTV === true) {
-      url = `/show/${id}`
-    } else if (isPerson === true) {
+    else if (isPerson === true) {
       url = `/person/${id}`
+    } else {
+      url = `/show/${id}`
     }
 
     return url
