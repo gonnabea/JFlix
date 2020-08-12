@@ -47,8 +47,8 @@ const Container = styled.a`
       animation: ${lining} 0.5s forwards;
     }
   }
-  @media screen and (max-width: 420px) {
-    width: 100px;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
   }
 `
 

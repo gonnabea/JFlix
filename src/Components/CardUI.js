@@ -9,6 +9,7 @@ const showArea = (height) => keyframes`
     to{
         height:inherit;
         opacity: 1;
+        
     }
 `
 const Container = styled.section`

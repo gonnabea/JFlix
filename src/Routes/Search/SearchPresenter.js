@@ -78,7 +78,7 @@ const SearchPresenter = ({
     <Form onSubmit={handleSubmit}>
       <Input
         type="text"
-        placeholder="Search Movies or TV Shows..."
+        placeholder="Movies, TV Shows, People..."
         value={searchTerm}
         onChange={updateTerm}
       />

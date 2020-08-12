@@ -32,7 +32,8 @@ const Screen = styled.main`
   padding-bottom: 200px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.2);
-  margin-bottom: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
 `
 
 const Overview = styled.p`
