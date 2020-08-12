@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: "6363d423c535019ac0a49bfc571cc2df",
@@ -9,7 +9,12 @@ const api = axios.create({
 })
 
 export const moviesApi = {
-  nowPlaying: () => api.get("movie/now_playing"),
+  nowPlaying: () =>
+    api.get("movie/now_playing", {
+      params: {
+        page: 1,
+      },
+    }),
   upComing: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: (id) =>
@@ -27,6 +32,12 @@ export const moviesApi = {
   company: (id) => api.get(`company/${id}`),
   credits: (id) => api.get(`/movie/${id}/credits`),
   recommendations: (id) => api.get(`movie/${id}/recommendations`),
+  topRated: (page) =>
+    api.get("movie/top_rated", {
+      params: {
+        page: page,
+      },
+    }),
 }
 
 export const tvApi = {

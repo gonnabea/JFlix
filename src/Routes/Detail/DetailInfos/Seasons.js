@@ -42,6 +42,14 @@ const Overview = styled.p`
   margin-bottom: 15px;
 `
 
+const AirDate = styled.div`
+  margin-bottom: 20px;
+`
+
+const Episodes = styled.div`
+  margin-bottom: 20px;
+`
+
 class Seasons extends Component {
   componentDidMount() {}
 
@@ -63,10 +71,10 @@ class Seasons extends Component {
               />
               <InfoArea>
                 <Name>{season.name}</Name>
+                <AirDate>{season.air_date}</AirDate>
+                <Episodes>{season.episode_count} Episodes</Episodes>
                 <Overview>
-                  {season.overview !== ""
-                    ? season.overview.substring(0, 300) + "..."
-                    : "No Synopsis. Sorry!"}
+                  {season.overview !== "" ? season.overview.substring(0, 300) + "..." : ""}
                 </Overview>
               </InfoArea>
             </Container>
