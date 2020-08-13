@@ -59,6 +59,12 @@ export const tvApi = {
   company: (id) => api.get(`company/${id}`),
   credits: (id) => api.get(`tv/${id}/credits`),
   recommendations: (id) => api.get(`tv/${id}/recommendations`),
+  onTheAir: (page) =>
+    api.get("tv/on_the_air", {
+      params: {
+        page: page,
+      },
+    }),
 }
 
 export const personApi = {

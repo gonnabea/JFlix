@@ -84,7 +84,7 @@ const MorePoster = ({ imageUrl, rating, name, year, isTv, id }) => (
         ) : null}
       </ImageContainer>
 
-      <Name>{name.length > 18 ? `${name.substring(0, 18)}...` : name}</Name>
+      <Name>{name && name.length > 18 ? `${name.substring(0, 18)}...` : name}</Name>
 
       <Year>{year}</Year>
     </Container>

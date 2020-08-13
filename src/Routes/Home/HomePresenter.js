@@ -7,7 +7,6 @@ import Message from "Components/Message"
 import Poster from "Components/Poster"
 import Helmet from "react-helmet"
 import Loader from "../../Components/Loader"
-import TopRated from "./TopRated"
 import MorePoster from "Components/MorePoster"
 
 const Container = styled.div`
