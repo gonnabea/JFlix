@@ -26,7 +26,7 @@ export const moviesApi = {
   search: (searchingBy) =>
     api.get("search/movie", {
       params: {
-        query: encodeURIComponent(searchingBy),
+        query: searchingBy,
       },
     }),
   company: (id) => api.get(`company/${id}`),
@@ -53,7 +53,7 @@ export const tvApi = {
   search: (searchingBy) =>
     api.get("search/tv", {
       params: {
-        query: encodeURIComponent(searchingBy),
+        query: searchingBy,
       },
     }),
   company: (id) => api.get(`company/${id}`),
@@ -72,7 +72,7 @@ export const personApi = {
   search: (query) =>
     api.get("search/person", {
       params: {
-        query: encodeURIComponent(query),
+        query: query,
       },
     }),
   movieAndTV: (id) => api.get(`person/${id}/combined_credits`),

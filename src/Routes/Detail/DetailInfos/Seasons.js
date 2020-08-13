@@ -74,7 +74,7 @@ class Seasons extends Component {
                 <AirDate>{season.air_date}</AirDate>
                 <Episodes>{season.episode_count} Episodes</Episodes>
                 <Overview>
-                  {season.overview !== "" ? season.overview.substring(0, 300) + "..." : ""}
+                  {season.overview !== null ? season.overview.substring(0, 300) + "..." : ""}
                 </Overview>
               </InfoArea>
             </Container>
