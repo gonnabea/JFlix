@@ -23,6 +23,15 @@ const ListTitle = styled.h1`
   text-align: center;
 `
 
+const LoaderContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+`
+
 const ListContainer = styled.section`
   display: flex;
   justify-content: center;
@@ -34,6 +43,21 @@ const Lists = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 20px;
+  @media screen and (max-width: 1450px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 450px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const HomePresenter = ({
@@ -105,21 +129,25 @@ const HomePresenter = ({
 
       <ListContainer>
         <Lists>
-          {pageLoading === false || pageLoading === null
-            ? topRated.map((topRated) =>
-                topRated.map((movie) => (
-                  <MorePoster
-                    key={movie.id}
-                    id={movie.id}
-                    imageUrl={movie.poster_path}
-                    name={movie.original_title}
-                    rating={movie.vote_average}
-                    year={movie.release_date ? movie.release_date.substring(0, 4) : ""}
-                    isMovie={true}
-                  />
-                ))
-              )
-            : null}
+          {pageLoading === false || pageLoading === null ? (
+            topRated.map((topRated) =>
+              topRated.map((movie) => (
+                <MorePoster
+                  key={movie.id}
+                  id={movie.id}
+                  imageUrl={movie.poster_path}
+                  name={movie.original_title}
+                  rating={movie.vote_average}
+                  year={movie.release_date ? movie.release_date.substring(0, 4) : ""}
+                  isMovie={true}
+                />
+              ))
+            )
+          ) : (
+            <LoaderContainer>
+              <Loader />
+            </LoaderContainer>
+          )}
         </Lists>
       </ListContainer>
       {error && <Message color="red" text={error}></Message>}

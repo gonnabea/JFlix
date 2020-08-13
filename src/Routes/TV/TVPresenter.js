@@ -19,10 +19,34 @@ const ListContainer = styled.section`
   height: 100%;
 `
 
+const LoaderContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+`
+
 const Lists = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 20px;
+  @media screen and (max-width: 1450px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 450px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const TVPresenter = ({ topRated, popular, airingTodays, loading, error, onTheAir, pageLoading }) =>
@@ -80,20 +104,24 @@ const TVPresenter = ({ topRated, popular, airingTodays, loading, error, onTheAir
       )}
       <ListContainer>
         <Lists>
-          {pageLoading === false || pageLoading === null
-            ? onTheAir.map((onTheAir) =>
-                onTheAir.map((show) => (
-                  <MorePoster
-                    key={show.id}
-                    id={show.id}
-                    imageUrl={show.poster_path}
-                    name={show.original_name}
-                    rating={show.vote_average}
-                    year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
-                  />
-                ))
-              )
-            : null}
+          {pageLoading === false || pageLoading === null ? (
+            onTheAir.map((onTheAir) =>
+              onTheAir.map((show) => (
+                <MorePoster
+                  key={show.id}
+                  id={show.id}
+                  imageUrl={show.poster_path}
+                  name={show.original_name}
+                  rating={show.vote_average}
+                  year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
+                />
+              ))
+            )
+          ) : (
+            <LoaderContainer>
+              <Loader />
+            </LoaderContainer>
+          )}
         </Lists>
       </ListContainer>
       {error && <Message text={error}></Message>}
