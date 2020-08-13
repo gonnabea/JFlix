@@ -74,6 +74,9 @@ const Text = styled.p`
       position: absolute;
     }
   }
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
   @keyframes repeatMove {
     from {
       transform: translate(0, 0) skew(0deg, 3deg);

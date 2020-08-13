@@ -32,7 +32,7 @@ const Screen = styled.main`
   padding-bottom: 200px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.2);
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   margin-bottom: 50px;
 `
 
@@ -41,7 +41,10 @@ const Overview = styled.p`
   width: 100%;
   line-height: 130%;
   font-family: "Times New Roman", Times, serif;
-  margin-bottom: 50px;
+
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+  }
 `
 
 const Countries = styled.section`
@@ -62,7 +65,6 @@ const CardContainer = styled.section`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 86px;
 `
 
 const PersonImg = styled.img`
@@ -143,7 +145,13 @@ const DetailNav = withRouter(
                       textArea={
                         <CardContainer>
                           <div>{cast.character}</div>
-                          <div style={{ color: "grey", width: "100%", textAlign: "center" }}>
+                          <div
+                            style={{
+                              color: "grey",
+                              width: "100%",
+                              textAlign: "center",
+                            }}
+                          >
                             {cast.name}
                           </div>
                         </CardContainer>
