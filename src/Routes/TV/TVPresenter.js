@@ -26,15 +26,15 @@ const LoaderContainer = styled.div`
   align-items: center;
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 `
 
 const Lists = styled.div`
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: 20px;
-  @media screen and (max-width: 1450px) {
-    grid-template-columns: repeat(8, 1fr);
-  }
   @media screen and (max-width: 1200px) {
     grid-template-columns: repeat(6, 1fr);
   }
