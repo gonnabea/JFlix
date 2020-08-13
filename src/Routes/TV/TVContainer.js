@@ -30,7 +30,7 @@ class TVContainer extends Component {
       try {
         this.setState({ pageLoading: true })
         this.setState({ page: this.state.page + 1 })
-        window.scrollTo(0, window.scrollY)
+        window.scrollTo(0, window.innerHeight + window.scrollY - 100)
 
         console.log(this.state.page)
 

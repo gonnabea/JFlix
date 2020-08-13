@@ -114,6 +114,7 @@ const TVPresenter = ({ topRated, popular, airingTodays, loading, error, onTheAir
                   name={show.original_name}
                   rating={show.vote_average}
                   year={show.first_air_date ? show.first_air_date.substring(0, 4) : ""}
+                  isTv={true}
                 />
               ))
             )
