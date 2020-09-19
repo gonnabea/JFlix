@@ -20,7 +20,7 @@ const A = styled.a`
     @media screen and (max-width: 500px) {
       display: block;
       width: 100px;
-      height: 100px;
+      height: 240px;
       position: relative;
       right: 0;
       margin-left: 15px;

@@ -23,17 +23,27 @@ const LoadingMsg = styled.p`
   align-items: center;
 `
 
+const LoadingImg = styled.img`
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export default () => (
   <Container>
     <Cube
       width={"300px"}
       frontBg={"black"}
       front={<LoadingMsg>Now Loading...</LoadingMsg>}
-      left={<LoadingMsg>Now Loading...</LoadingMsg>}
-      right={<LoadingMsg>Now Loading...</LoadingMsg>}
-      back={<LoadingMsg>Now Loading...</LoadingMsg>}
-      top={<LoadingMsg>Now Loading...</LoadingMsg>}
-      bottom={<LoadingMsg>Now Loading...</LoadingMsg>}
+      left={<LoadingImg src="Interstella.jpg" />}
+      right={<LoadingImg src="Harry.jpg" />}
+      back={<LoadingImg src="Parasite.jpg" />}
+      top={<LoadingImg src="Inception.jpg" />}
+      bottom={<LoadingImg src="Joker.webp" />}
     />
   </Container>
 )
