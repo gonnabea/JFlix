@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, withRouter } from "react-router-dom"
 import styled from "styled-components"
+import ToggleBtn from "./toggleBtn"
+import toggleBtn from "./toggleBtn"
 // import Cube from "./3dCube";
 
 const Header = styled.header`
@@ -86,6 +88,7 @@ export default withRouter(({ location: { pathname } }) => (
           Search
         </SLink>
       </Item>
+      <ToggleBtn></ToggleBtn>
     </List>
   </Header>
 ))
