@@ -88,7 +88,6 @@ export default withRouter(({ location: { pathname } }) => (
           Search
         </SLink>
       </Item>
-      <ToggleBtn></ToggleBtn>
     </List>
   </Header>
 ))

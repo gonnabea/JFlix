@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import styled, { keyframes } from "styled-components"
 
 const Container = styled.section`
@@ -11,8 +11,8 @@ const Outline = styled.div`
   border-radius: 40px;
   background-color: white;
   border: 5px solid ${(props) => props.outlineColor};
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
 `
@@ -28,12 +28,12 @@ const Switch = styled.div`
   left: 0px;
   @keyframes toRight {
     to {
-      left: 40px;
+      left: 60%;
     }
   }
   @keyframes toLeft {
     from {
-      left: 40px;
+      left: 60%;
     }
     to {
       left: 0;
@@ -54,7 +54,7 @@ const ToggleBtn = ({
 }) => {
   const switchRef = useRef()
   const switchStatus = useRef("left")
-  const text = useRef(text1)
+  const text = useRef()
 
   const handleToggle = () => {
     if (switchStatus.current === "left") {
@@ -73,7 +73,7 @@ const ToggleBtn = ({
       <Outline outlineColor={outlineColor}>
         <Switch switchColor={switchColor} ref={switchRef}>
           <Text textColor={textColor} ref={text}>
-            {text.current}
+            {text.current ? text.current.innerHTML : text1}
           </Text>
         </Switch>
       </Outline>
