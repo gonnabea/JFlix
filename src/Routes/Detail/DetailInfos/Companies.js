@@ -21,6 +21,7 @@ const Companies = ({ companies }) => {
           imageSrc={imageSrc}
           descriptions={descriptions}
           color={"#45E7B6"}
+          imageWidth="250px"
         />
       </Container>
     )

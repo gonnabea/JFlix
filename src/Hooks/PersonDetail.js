@@ -240,6 +240,7 @@ const PersonDetail = ({ match }) => {
             color="#45e7b6"
             descriptions={releaseDate}
             imageSrc={poster}
+            imageWidth="300px"
           />
         </FilmoArea>
       </InfoArea>

@@ -91,7 +91,7 @@ const DetailNav = withRouter(
           <NeonLineButton
             width="140px"
             text="Companies"
-            // color="#45E7B6"
+            color="#45E7B6"
             detector={location.pathname === `${currentUrl}/companies` ? true : false}
           />
         </Link>

@@ -19,7 +19,7 @@ const A = styled.a`
     display: none;
     @media screen and (max-width: 500px) {
       display: block;
-      width: 100px;
+      width: 180px;
       height: 240px;
       position: relative;
       right: 0;
@@ -43,7 +43,7 @@ const A = styled.a`
     to {
       height: ${(props) => (props.imageWidth ? props.imageWidth : "200px")};
       @media screen and (max-width: 500px) {
-        height: ${(props) => (props.imageWidth ? props.imageWidth : "200px")};
+        height: ${(props) => (props.imageWidth ? props.imageWidth * 1.25 : "250px")};
       }
     }
   }

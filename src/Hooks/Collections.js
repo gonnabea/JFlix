@@ -47,7 +47,7 @@ const Collections = ({ location }) => {
       links={links}
       imageSrc={imageSrc}
       descriptions={descriptions}
-      imageWidth="250px"
+      imageWidth="300px"
       color="#21E9FE"
     />
   ) : (
