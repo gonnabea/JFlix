@@ -41,7 +41,7 @@ const A = styled.a`
       height: 0;
     }
     to {
-      height: ${(props) => (props.imageWidth ? props.imageWidth : "200px")};
+      height: ${(props) => (props.imageWidth ? props.imageWidth * 1.25 : "250px")};
       @media screen and (max-width: 500px) {
         height: ${(props) => (props.imageWidth ? props.imageWidth * 1.25 : "250px")};
       }
