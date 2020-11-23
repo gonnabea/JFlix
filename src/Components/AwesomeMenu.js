@@ -27,13 +27,16 @@ const A = styled.a`
       margin-bottom: 15px;
     }
   }
+
   :hover {
-    img {
-      display: block;
-      animation: showImage 0.3s forwards;
-      margin-left: 30px;
-      position: fixed;
-      z-index: 10;
+    @media screen and (min-width: 500px) {
+      img {
+        display: block;
+        animation: showImage 0.3s forwards;
+        margin-left: 30px;
+        position: fixed;
+        z-index: 10;
+      }
     }
   }
   @keyframes showImage {
@@ -95,9 +98,11 @@ const Image = styled.img`
 const AwesomeMenu = ({ names, links, imageSrc, descriptions, fontSize, imageWidth, color }) => {
   const showImage = (e) => {
     const image = document.getElementsByClassName("image")
-    for (let i = 0; i < image.length; i++) {
-      image[i].style.left = `${e.clientX}px`
-      image[i].style.top = `${e.clientY - 100}px`
+    if (window.matchMedia("(min-width: 500px)").matches) {
+      for (let i = 0; i < image.length; i++) {
+        image[i].style.left = `${e.clientX}px`
+        image[i].style.top = `${e.clientY - 100}px`
+      }
     }
   }
 
